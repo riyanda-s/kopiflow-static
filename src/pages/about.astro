@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Gallery from '../components/Gallery.astro';
+import CTAButton from '../components/CTAButton.astro';
+import { business } from '../config/business';
+---
+<Layout title={`Our Story | ${business.name}`}>
+<section class="page-intro shell"><p class="eyebrow">{business.tagline.toUpperCase()}</p><h1>Ours begins with<br/>a moment of pause.</h1><p>A love letter to coffee, quiet afternoons, and good company.</p></section>
+<section class="shell story-grid about-story"><img class="rounded-photo" src={business.images.story} width="900" height="1000" alt={business.images.storyAlt}/><div class="story-copy"><SectionHeading eyebrow="THE IDEA BEHIND THE CUP" title={business.story.title}/><p>{business.story.body}</p><p>{business.story.detail}</p>{business.isDemo && <p class="demo-note">{business.name} is an original fictional brand created for the KopiFlow Static template. This story describes a concept, not an operating business.</p>}</div></section>
+<section class="section shell"><SectionHeading eyebrow="OUR COFFEE PHILOSOPHY" title="Care in the small details."/><div class="values-grid">{business.philosophy.map((value, i) => <article><span class="value-number">0{i + 1}</span><h3>{value.title}</h3><p>{value.text}</p></article>)}</div><div class="quality-note"><h3>{business.coffeeQuality.title}</h3><p>{business.coffeeQuality.body}</p></div></section>
+<section class="section shell"><SectionHeading eyebrow="SOMEWHERE TO SLOW DOWN" title="Picture your next little pause."/><Gallery/></section><section class="shell closing-cta"><p class="eyebrow">THE NEXT CHAPTER IS YOURS</p><h2>Meet us over a cup.</h2><CTAButton href="/visit/">Plan your visit</CTAButton></section>
+</Layout>

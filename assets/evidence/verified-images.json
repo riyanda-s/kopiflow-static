@@ -1,0 +1,40 @@
+[
+  {
+    "photographer": "Karl Fredrickson",
+    "page": "https://unsplash.com/photos/person-filling-glass-container-TYIzeCiZ_60",
+    "cdn": "https://images.unsplash.com/photo-1442512595331-e89e73853f31",
+    "source": "hero",
+    "derivatives": [
+      "hero.webp",
+      "hero-800.webp"
+    ],
+    "checkedOn": "2026-10-21",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "termsUrl": "https://unsplash.com/terms",
+    "observed": "Primary page names photographer and Unsplash License; image link target matches CDN identifier. Reader could not fetch target image.",
+    "sourceSha256": "71d74c9d2dd3742e4f029bab4e3d448725215b048ccf2c8616b5912fb2fba16f",
+    "derivativesSha256": {
+      "hero.webp": "293d93f17a3abb1ffb324550b25242acf83027fbbe462f2f0d4215e8c7daa540",
+      "hero-800.webp": "055fcd2f7140e5ee00e2068731cd338bdb1f3ccea32cec30cd9cc69168ed7259"
+    }
+  },
+  {
+    "photographer": "Mae Mu",
+    "page": "https://unsplash.com/photos/two-brown-croissants-m9pzwmxm2rk",
+    "cdn": "https://images.unsplash.com/photo-1555507036-ab1f4038808a",
+    "source": "pastry",
+    "derivatives": [
+      "pastry.webp"
+    ],
+    "checkedOn": "2026-10-21",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "termsUrl": "https://unsplash.com/terms",
+    "observed": "Primary page names photographer and Unsplash License; image link target matches CDN identifier. Reader could not fetch target image.",
+    "sourceSha256": "1d06ef4718ff8776430ce578d08124944667397918c2996ff14e1114fde124ec",
+    "derivativesSha256": {
+      "pastry.webp": "481ebea684a072e452af77ece61d471193034f760af1f7460fc92cb4bc6ed462"
+    }
+  }
+]

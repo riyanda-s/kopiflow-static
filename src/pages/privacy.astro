@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { business } from '../config/business';
+---
+<Layout lang="id" title={`Privasi | ${business.name}`}><article class="shell prose section">
+<p class="eyebrow">PERANGKAT ANDA. KERANJANG ANDA.</p><h1>Catatan privasi.</h1>
+<h2>Data yang tersimpan di perangkat</h2><p>Pilihan produk dan jumlah disimpan di localStorage browser jika tersedia. Hapus melalui tombol “Kosongkan keranjang” atau pengaturan data situs pada browser. Jika penyimpanan tidak tersedia, keranjang hanya berlaku pada halaman saat ini dan hilang saat berpindah halaman. Catatan untuk barista hanya berada di memori halaman dan tidak disimpan oleh situs ini.</p>
+<h2>Saat membuka WhatsApp</h2><p>Jika pemesanan diaktifkan, tautan WhatsApp berisi produk, pilihan, jumlah, estimasi harga, dan catatan Anda. WhatsApp menerima tautan saat dibuka dan memproses informasi sesuai kebijakannya sendiri. Anda harus mengirim pesan dan menunggu konfirmasi kedai. Jangan sertakan informasi sensitif dalam catatan.</p>
+<h2>Tanpa akun atau pengumpulan pembayaran</h2><p>Situs ini tidak memiliki akun, basis data, analitik, peta tertanam, atau formulir pembayaran. Gambar dan aset situs disajikan dari hosting situs. Penyedia hosting dapat memproses log akses biasa, termasuk alamat IP, sesuai ketentuannya.</p>
+<h2>Layanan eksternal</h2><p>Maps, Instagram, dan WhatsApp dibuka hanya ketika Anda mengikuti tautan eksternal yang dikonfigurasi. Masing-masing memiliki kebijakan privasi sendiri. {business.isDemo && 'Tautan kontak dinonaktifkan pada demo fiktif ini.'}</p>
+<h2>Pertanyaan</h2><p>Gunakan informasi kontak di <a href="/visit/">halaman lokasi</a>. Pemilik situs pelanggan perlu meninjau pernyataan ini terhadap hosting dan integrasi yang benar-benar digunakan sebelum peluncuran.</p>
+</article></Layout>

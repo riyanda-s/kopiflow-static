@@ -1,0 +1,12 @@
+---
+import { Plus } from '@lucide/astro';
+import type { Product } from '../data/menu';
+import { rupiah } from '../utils/cart';
+interface Props { product: Product }
+const { product: p } = Astro.props;
+---
+<article lang="id" class="product-card" data-product-card data-category={p.category} data-search={`${p.name} ${p.description}`.toLowerCase()}>
+  <button class="product-image" data-product={p.id} aria-label={`Atur ${p.name}${p.badge ? ` ${p.badge}` : ''}${!p.available ? ' Sedang tidak tersedia' : ''}`} disabled={!p.available}><img src={p.image} width="600" height="600" loading="lazy" alt={p.imageAlt}/>{p.badge && <span class="product-badge">{p.badge}</span>}{!p.available && <span class="unavailable">Sedang tidak tersedia</span>}</button>
+  <div class="product-topline"><span>{p.category}</span><span>{p.available ? 'Tersedia' : 'Habis hari ini'}</span></div>
+  <h3>{p.name}</h3><p>{p.description}</p><div class="product-bottom"><strong>{rupiah(p.price)}</strong><button class="add-button" data-product={p.id} disabled={!p.available} aria-label={`Atur ${p.name}`}><Plus size={18}/></button></div>
+</article>

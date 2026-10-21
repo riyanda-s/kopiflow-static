@@ -1,0 +1,4 @@
+---
+import { business } from '../config/business';
+---
+<div class="gallery">{business.gallery.map((photo, i) => <figure><img src={photo.src} width="800" height="700" loading="lazy" alt={photo.alt}/><figcaption><span>0{i + 1}</span>{['Find your corner.', 'Savor the little things.', 'Make room for something good.'][i]}</figcaption></figure>)}</div>

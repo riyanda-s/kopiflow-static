@@ -1,0 +1,5 @@
+---
+import { business } from '../config/business';
+import { canCheckout } from '../utils/checkout';
+---
+<label class="notes-label" for="customer-notes">Catatan untuk barista <span>(opsional)</span></label><textarea id="customer-notes" maxlength="500" rows="2" placeholder="Contoh: tanpa sedotan"></textarea><div class="cart-total"><span>Estimasi total</span><strong id="cart-total">Rp0</strong></div><p class="fine-print">Ketersediaan dan harga akhir dikonfirmasi oleh kedai. Kirim pesan WhatsApp Anda dan tunggu konfirmasi. Membuka WhatsApp belum berarti pesanan diterima atau dibayar.</p><button id="checkout" class="button" disabled={!canCheckout(business)}>{business.isDemo ? 'Demo · pemesanan dinonaktifkan' : !canCheckout(business) ? 'Nomor kedai belum diverifikasi' : 'Lanjut ke WhatsApp ↗'}</button><p id="checkout-status" role="status"></p><a id="checkout-fallback" class="text-link" hidden href="#">Buka WhatsApp di tab ini →</a>

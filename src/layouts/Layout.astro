@@ -1,0 +1,16 @@
+---
+import '../styles/global.css';
+import { business } from '../config/business';
+import { theme } from '../config/theme';
+import { validateConfig } from '../utils/config';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import ProductModal from '../components/ProductModal.astro';
+import CartDrawer from '../components/CartDrawer.astro';
+interface Props { title?: string; description?: string; lang?: string }
+const { title = business.seo.title, description = business.seo.descriptions[Astro.url.pathname as keyof typeof business.seo.descriptions] ?? business.description, lang = 'en' } = Astro.props;
+validateConfig();
+const canonical = new URL(Astro.url.pathname, business.domain).href;
+const schema = { '@context': 'https://schema.org', '@type': 'WebSite', name: business.name, url: business.domain, description };
+---
+<!doctype html><html lang={lang} style={Object.entries(theme).map(([key, value]) => `--${key}:${value}`).join(';')}><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="theme-color" content={theme.espresso}/><title>{title}</title><meta name="robots" content={business.isDemo || !business.allowIndexing ? "noindex, follow" : "index, follow"}/><meta name="description" content={description}/><link rel="canonical" href={canonical}/><link rel="icon" type="image/svg+xml" href={business.logo}/><meta property="og:type" content="website"/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:image" content={new URL(business.seo.image, business.domain).href}/><meta property="og:image:alt" content={`${business.name} coffee photography`}/><meta property="og:locale" content={lang === 'id' ? 'id_ID' : business.seo.locale}/><meta name="twitter:card" content="summary_large_image"/><script type="application/ld+json" set:html={JSON.stringify(schema).replaceAll('<', '\\u003c')}/></head><body><a href="#main" class="skip-link">Skip to content</a><Navbar/><main id="main"><slot/></main><Footer/><ProductModal/><CartDrawer/><script>import '../scripts/storefront';</script></body></html>

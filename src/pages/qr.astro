@@ -1,0 +1,6 @@
+---
+import Layout from '../layouts/Layout.astro';
+import QRCodeGenerator from '../components/QRCodeGenerator.astro';
+import { business } from '../config/business';
+---
+<Layout lang="id" title={`QR Menu Digital | ${business.name}`}><section class="page-intro shell no-print"><p class="eyebrow">JALAN SINGKAT KE MENU FAVORIT</p><h1>Menu, cukup dipindai.</h1><p>Pratinjau QR menu. Unduh SVG atau cetak setelah URL publik dikonfigurasi.</p></section><section class="shell qr-section"><QRCodeGenerator/></section></Layout>

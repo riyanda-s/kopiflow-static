@@ -1,0 +1,4 @@
+---
+import WhatsAppCheckout from './WhatsAppCheckout.astro';
+---
+<dialog id="cart-drawer" lang="id" aria-labelledby="cart-title"><div class="cart-shell"><div class="cart-heading"><div><p class="eyebrow">PILIHAN ANDA</p><h2 id="cart-title">Keranjang Anda</h2></div><button class="icon-button" data-close aria-label="Tutup keranjang">×</button></div><div id="cart-items"></div><div id="cart-filled"><button id="clear-cart" class="quiet-button">Kosongkan keranjang</button><WhatsAppCheckout/></div><p class="fine-print">Keranjang tersimpan di perangkat ini. <a href="/privacy/">Informasi privasi</a></p></div></dialog><button class="mobile-cart cart-trigger" lang="id">Keranjang Anda <span class="cart-count">0</span><span>Lihat keranjang →</span></button><div id="announcement" lang="id" class="toast" role="status" aria-live="polite"></div>

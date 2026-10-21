@@ -1,0 +1,10 @@
+---
+import { ShoppingBag, Menu, ArrowUpRight } from '@lucide/astro';
+import { business } from '../config/business';
+const links = [{ href: '/', label: 'Beranda' }, { href: '/menu/', label: 'Menu' }, { href: '/about/', label: 'Cerita Kami' }, { href: '/visit/', label: 'Lokasi' }];
+---
+<header class="site-header"><div class="shell nav-wrap">
+  <a href="/" class="brand"><img src={business.logo} width="42" height="42" alt="" /><span>{business.name}<small>COFFEE & LITTLE MOMENTS</small></span></a>
+  <nav lang="id" aria-label="Navigasi utama" id="main-nav">{links.map(link => <a href={link.href} aria-current={Astro.url.pathname === link.href ? 'page' : undefined}>{link.label}</a>)}</nav>
+  <div class="nav-actions"><a href="/visit/" class="nav-visit">Come say hello <ArrowUpRight size={16}/></a><button class="icon-button cart-trigger"><span class="sr-only">Buka keranjang </span><ShoppingBag size={21}/><span class="cart-count">0</span></button><button id="nav-toggle" class="icon-button nav-toggle" aria-label="Buka navigasi" aria-controls="main-nav" aria-expanded="false"><Menu size={23}/></button></div>
+</div></header>

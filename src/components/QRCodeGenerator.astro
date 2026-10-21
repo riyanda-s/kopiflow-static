@@ -1,0 +1,9 @@
+---
+import QRCode from 'qrcode';
+import { business } from '../config/business';
+const url = new URL('/menu/', business.domain).href;
+const svg = await QRCode.toString(url, { type: 'svg', errorCorrectionLevel: 'M', margin: 4, color: { dark: '#3B241C', light: '#FFFFFF' } });
+const data = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+const urlConfigured = !new URL(business.domain).hostname.endsWith('.example');
+---
+<div class="qr-card" lang="id"><img class="qr-logo" src={business.logo} width="60" height="60" alt=""/><h2>{business.name}</h2><p lang="en">{business.tagline}</p><img class="qr-code" src={data} width="280" height="280" alt={`Kode QR menuju ${url}`}/><h3>Pindai untuk Melihat Menu</h3><p class="qr-url">{url}</p>{!urlConfigured && <p class="demo-note">URL publik belum ditentukan. QR ini hanya pratinjau dan belum boleh dicetak untuk pelanggan.</p>}{urlConfigured && business.isDemo && <p class="demo-note">Menu demo fiktif. Pemesanan dinonaktifkan.</p>}</div><div class="qr-actions" lang="id">{urlConfigured ? <a class="button" href={data} download={`${business.name.toLowerCase().replaceAll(' ', '-')}-menu.svg`}>Unduh SVG ↓</a> : <button class="button" disabled>Unduh SVG ↓</button>}<button class="button secondary" id="print-qr" disabled={!urlConfigured}>Cetak kartu menu</button></div><p class="fine-print text-center" lang="id">QR membuka halaman menu. QR tidak mengenali nomor meja atau memantau pesanan langsung.</p>

@@ -1,0 +1,4 @@
+---
+import { business } from '../config/business';
+---
+<footer lang="en"><div class="shell footer-top"><div><a class="footer-brand" href="/">{business.name}<span aria-hidden="true">☀</span></a><p>{business.tagline}<br/>A good cup. A slower moment.</p></div><div><p class="eyebrow">FIND YOUR MOMENT</p><a href="/menu/">Our menu</a><a href="/about/">Our story</a><a href="/visit/">Visit us</a></div><div><p class="eyebrow">LET’S CONNECT</p><a href="/visit/#contact">Contact & directions ↗</a><a href="/qr/">Digital menu QR ↗</a><a href="/privacy/">Privacy</a></div><div><p class="eyebrow">TAKE YOUR TIME</p>{business.hours.map(h => <p class="footer-hours">{h.days}<br/><strong>{h.time}</strong></p>)}</div></div><div class="shell footer-bottom"><span>© {new Date().getFullYear()} {business.name}. Crafted for everyday moments.</span><span>{business.isDemo ? 'Fictional brand · KopiFlow template demo' : 'Made with care in Indonesia'}</span></div></footer>

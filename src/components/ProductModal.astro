@@ -1,0 +1,4 @@
+---
+import QuantitySelector from './QuantitySelector.astro';
+---
+<dialog id="product-modal" lang="id" aria-labelledby="product-title"><div class="modal-shell"><button class="dialog-close icon-button" data-close aria-label="Tutup produk">×</button><img id="modal-photo" src="/images/product-unavailable.svg" width="600" height="400" alt=""/><div class="modal-body"><p class="eyebrow" id="product-category"></p><h2 id="product-title"></h2><p id="product-description"></p><form id="product-form"><div id="product-options"></div><div class="modal-order"><QuantitySelector/><button class="button" type="submit" id="add-to-cart">Tambah ke keranjang <span id="product-price"></span></button></div></form><p id="product-error" role="alert"></p></div></div></dialog>

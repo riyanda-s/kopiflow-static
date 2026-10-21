@@ -1,0 +1,4 @@
+---
+import { categories } from '../data/menu';
+---
+<div class="category-filter" aria-label="Saring kategori menu" role="group">{['Semua', ...categories].map((category, i) => <button data-filter={category} aria-pressed={i === 0}>{category}</button>)}</div>
