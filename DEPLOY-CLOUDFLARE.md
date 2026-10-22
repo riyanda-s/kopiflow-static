@@ -38,7 +38,7 @@ The repo includes a generated `404.html`, preserving a real missing-page experie
 4. Make `business.domain` match that final HTTPS origin. Rebuild/redeploy if it changed.
 5. Confirm canonical/OG links, sitemap, and QR on production. Scan before printing QR materials.
 
-For an eventual fictional public demo, keep `isDemo: true`, `whatsappVerified: false` and `allowIndexing: false`. Do not enable customer ordering merely to configure the origin. Production customer checkout additionally requires owner verification of the actual recipient, approved real content and explicit launch authorization. No actual public-demo origin has been selected in this repository.
+For the fictional public demo, use `PUBLIC_SITE_URL=https://kopiflow-demo.pages.dev` in the build environment and keep `isDemo: true`, `whatsappVerified: false`, an empty WhatsApp number and `allowIndexing: false`. This workspace's local build reads the origin from ignored `.env`; Git-connected Pages builds need their own build environment setting because that file is not committed. Do not enable customer ordering merely to configure the origin. Production customer checkout additionally requires owner verification of the actual recipient, approved real content and explicit launch authorization. The final localization work has not been deployed automatically; see `FINAL-DEMO-RELEASE.md` for local versus currently live results.
 
 Domain registration and renewals are customer expenses, not included in free hosting. This project does not purchase or configure domains automatically.
 

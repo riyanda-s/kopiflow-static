@@ -4,6 +4,9 @@ import sharp from 'sharp';
 import jsQR from 'jsqr';
 import { mkdir, readFile } from 'node:fs/promises';
 import generatedImages from '../../assets/evidence/generated-products.json' with { type: 'json' };
+import { loadEnv } from 'vite';
+const publicOrigin = process.env.PUBLIC_SITE_URL || loadEnv('production', process.cwd(), 'PUBLIC_').PUBLIC_SITE_URL || 'https://kopisenja.example';
+const publicUrlConfigured = !new URL(publicOrigin).hostname.endsWith('.example');
 
 test('one menu illustration note replaces repeated labels while AI alternatives and assets remain intact', async ({ page }) => {
   await page.goto('/menu/');
@@ -30,7 +33,7 @@ test('all static pages, metadata, assets, mobile sizing and navigation work', as
   const errors: string[] = []; page.on('pageerror', e => errors.push(e.message));
   for (const route of ['/', '/menu/', '/about/', '/visit/', '/privacy/', '/qr/']) {
     const response = await page.goto(route); expect(response?.status()).toBe(200); await expect(page.locator('h1')).toBeVisible();
-    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://kopisenja.example${route}`);
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `${publicOrigin}${route}`);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
     expect(await page.locator('img').evaluateAll(images => images.every(image => image instanceof HTMLImageElement && (image.complete ? image.naturalWidth > 0 : true)))).toBe(true);
   }
@@ -99,18 +102,24 @@ test('blocked storage still permits a session cart', async ({ page }) => {
   await page.goto('/menu/');
   await page.getByRole('button', { name: 'Atur Butter Croissant', exact: true }).first().click();
   await page.getByRole('button', { name: 'Tambah ke keranjang' }).click();
+  await expect(page.locator('#announcement')).toContainText('Penyimpanan browser tidak tersedia.');
   await page.getByRole('button', { name: 'Buka keranjang' }).first().click();
   await expect(page.locator('#cart-total')).toContainText('22.000');
 });
 test('QR SVG export and print styles exist for the configured URL', async ({ page }) => {
   await page.goto('/qr/');
-  await expect(page.getByText('https://kopisenja.example/menu/', { exact: true })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Unduh SVG' })).toBeDisabled();
-  await expect(page.getByRole('button', { name: 'Cetak kartu menu' })).toBeDisabled();
+  await expect(page.getByText(`${publicOrigin}/menu/`, { exact: true })).toBeVisible();
+  if (publicUrlConfigured) {
+    await expect(page.getByRole('link', { name: 'Unduh SVG' })).toHaveAttribute('download', /menu\.svg$/);
+    await expect(page.getByRole('button', { name: 'Cetak kartu menu' })).toBeEnabled();
+  } else {
+    await expect(page.getByRole('button', { name: 'Unduh SVG' })).toBeDisabled();
+    await expect(page.getByRole('button', { name: 'Cetak kartu menu' })).toBeDisabled();
+  }
   const href = await page.locator('.qr-code').getAttribute('src'); expect(decodeURIComponent(href!)).toContain('<svg');
   const svg = decodeURIComponent(href!.slice(href!.indexOf(',') + 1));
   const raster = await sharp(Buffer.from(svg)).resize(600, 600).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
-  expect(jsQR(new Uint8ClampedArray(raster.data), raster.info.width, raster.info.height)?.data).toBe('https://kopisenja.example/menu/');
+  expect(jsQR(new Uint8ClampedArray(raster.data), raster.info.width, raster.info.height)?.data).toBe(`${publicOrigin}/menu/`);
   await page.emulateMedia({ media: 'print' }); await expect(page.locator('.qr-card')).toBeVisible(); await expect(page.locator('header')).not.toBeVisible();
 });
 test('demo ordering stays disabled and mobile ordering controls are comfortable to tap', async ({ page }) => {
@@ -128,6 +137,46 @@ test('demo ordering stays disabled and mobile ordering controls are comfortable 
   await page.getByRole('button', { name: 'Tambah ke keranjang' }).click();
   await page.getByRole('button', { name: 'Buka keranjang' }).click();
   await expect(page.locator('#checkout')).toBeDisabled(); await expect(page.locator('#checkout-fallback')).toBeHidden();
+});
+
+test('demo checkout cannot be enabled through keyboard or forced DOM clicks and has no usable fallback', async ({ page, context }) => {
+  const externalRequests: string[] = [];
+  await context.route('**/*', route => {
+    const url = new URL(route.request().url());
+    if (url.origin !== 'http://127.0.0.1:4325') { externalRequests.push(url.href); return route.abort(); }
+    return route.continue();
+  });
+  await page.goto('/menu/');
+  await page.evaluate(() => { window.open = () => { document.body.dataset.popupAttempt = 'true'; return null; }; });
+  await page.getByRole('button', { name: 'Atur Butter Croissant', exact: true }).first().click();
+  await page.getByRole('button', { name: 'Tambah ke keranjang' }).click();
+  await page.getByRole('button', { name: 'Buka keranjang' }).first().click();
+  const checkout = page.locator('#checkout'); const fallback = page.locator('#checkout-fallback');
+  await expect(checkout).toBeDisabled(); await expect(fallback).toBeHidden(); await expect(fallback).toHaveAttribute('href', '#');
+  const saved = await page.evaluate(() => localStorage.getItem('kopiflow:cart:v1'));
+  await checkout.evaluate(button => { (button as HTMLButtonElement).focus(); });
+  await expect(checkout).not.toBeFocused();
+  await page.keyboard.press('Enter');
+  await checkout.evaluate(button => { button.removeAttribute('disabled'); (button as HTMLButtonElement).click(); button.dispatchEvent(new MouseEvent('click', { bubbles: true })); });
+  await expect(fallback).toBeHidden(); await expect(fallback).toHaveAttribute('href', '#');
+  expect(await page.evaluate(() => document.body.dataset.popupAttempt)).toBeUndefined();
+  expect(await page.evaluate(() => localStorage.getItem('kopiflow:cart:v1'))).toBe(saved);
+  expect(externalRequests).toEqual([]);
+});
+
+test('all pages use Indonesian interface copy and keep the brand tagline and demo notices', async ({ page }) => {
+  for (const route of ['/', '/menu/', '/about/', '/visit/', '/qr/', '/privacy/', '/404.html']) {
+    await page.goto(route);
+    await expect(page.locator('html')).toHaveAttribute('lang', 'id');
+    await expect(page.locator('footer')).toContainText('Every Sip Has a Story.');
+    await expect(page.locator('footer')).toContainText('Merek fiktif');
+    await expect(page.locator('.skip-link')).toHaveText('Lewati ke konten utama');
+    const text = await page.locator('body').innerText();
+    expect(text).not.toMatch(/Come say hello|FIND YOUR MOMENT|LET.S CONNECT|TAKE YOUR TIME|Our story|Our menu|Get directions|Visit information|This is a fictional shop|Page not found|Send the message in WhatsApp|Browser storage is unavailable/);
+  }
+  await page.goto('/visit/');
+  await expect(page.locator('.visit-details')).toContainText('Jam buka hanya contoh. Demo ini tidak memiliki lokasi fisik.');
+  await expect(page.locator('#contact')).toContainText('Ini adalah kedai fiktif.');
 });
 test('Pages content security policy permits cart interaction and QR rendering', async ({ page }) => {
   const headers = await readFile('public/_headers', 'utf8');

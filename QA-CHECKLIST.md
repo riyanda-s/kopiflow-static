@@ -1,5 +1,9 @@
 # QA and launch checklist
 
+## Latest final localization and release validation — 2026-10-22
+
+Indonesian interface localization is complete while the brand tagline and product data/images remain unchanged. The local build uses `https://kopiflow-demo.pages.dev`; canonical/sitemap/QR and intentional noindex were verified. Check/lint/build passed, all 51 unit and 30 E2E tests passed, the isolated customer configuration test passed, and npm audit reported zero vulnerabilities. Demo checkout stays disabled under keyboard and forced-DOM attempts. Actual public HTTP checks found correct availability, redirects, five security headers and 27 valid image HEAD responses; the live site still serves earlier English copy and has not received the localized build. **Local GO; final localized public release NO-GO until separately authorized deployment; commercial client deployment NO-GO with fictional/unverified configuration.** See [FINAL-DEMO-RELEASE.md](FINAL-DEMO-RELEASE.md) for evidence, scope and limitations. Older entries below are historical.
+
 ## Latest UI polish — 2026-10-22
 
 Repeated visible AI captions are replaced by one general note near the menu footer; AI alt text/metadata and asset evidence remain intact. Product card tracks, prices/borders and the three approved gallery images align at 1440/768/390/320px, including long-copy stress tests. Requested homepage copy is Indonesian and centralized. Check/lint/build passed, 51 unit tests and all 26 E2E tests passed, and the customer configuration fixture passed. Accessibility checks were retained and expanded across the four-width matrix. Screenshots/measurements are ignored under `qa-artifacts/ui-polish/`; see [UI-POLISH-REPORT.md](UI-POLISH-REPORT.md) for precise results, file changes and testing limits. Earlier image-restoration entries below describe the previous UI presentation.

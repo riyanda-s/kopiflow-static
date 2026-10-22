@@ -43,7 +43,7 @@ export function describeItem(item: CartItem): string {
 }
 export function checkoutMessage(name: string, items: CartItem[], notes = ''): string {
   if (!items.length) throw new Error('Keranjang masih kosong.');
-  const lines = items.map((item, i) => { validateItem(item); return `${i + 1}. ${productFor(item).name}\n   Qty: ${item.quantity}\n   ${describeItem(item)}\n   Subtotal: ${rupiah(unitPrice(item) * item.quantity)}`; });
+  const lines = items.map((item, i) => { validateItem(item); return `${i + 1}. ${productFor(item).name}\n   Jumlah: ${item.quantity}\n   ${describeItem(item)}\n   Subtotal: ${rupiah(unitPrice(item) * item.quantity)}`; });
   return `Halo ${name}, saya ingin memesan:\n\n${lines.join('\n\n')}\n\nEstimasi Total: ${rupiah(total(items))}${notes.trim() ? `\n\nCatatan: ${notes.trim().slice(0, 500)}` : ''}\n\nMohon konfirmasi ketersediaan, total akhir, dan metode pembayaran.`;
 }
 export const whatsappUrl = (number: string, message: string) => `https://wa.me/${normalizeWhatsApp(number)}?text=${encodeURIComponent(message)}`;

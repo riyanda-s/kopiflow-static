@@ -27,7 +27,7 @@ describe('WhatsApp checkout', () => {
   it.each(['', 'abc6281234567890', '123', '00000', '000000000000', '++6281234567890', '62+81234567890', '+081234567890', '6281234567890123456'])('rejects invalid number %s', input => expect(() => normalizeWhatsApp(input)).toThrow());
   it('produces a complete encoded order with notes and confirmation request', () => {
     const message = checkoutMessage('Kopi Senja', [item()], 'Tanpa sedotan & terima kasih');
-    expect(message).toContain('Kopi Senja'); expect(message).toContain('Ukuran: Besar'); expect(message).toContain('Gula: 50%'); expect(message).toContain('Tambahan espresso'); expect(message).toContain('Qty: 2'); expect(message).toContain('72.000'); expect(message).toContain('Mohon konfirmasi');
+    expect(message).toContain('Kopi Senja'); expect(message).toContain('Ukuran: Besar'); expect(message).toContain('Gula: 50%'); expect(message).toContain('Tambahan espresso'); expect(message).toContain('Jumlah: 2'); expect(message).toContain('72.000'); expect(message).toContain('Mohon konfirmasi');
     const url = new URL(whatsappUrl('081234567890', message)); expect(url.hostname).toBe('wa.me'); expect(url.searchParams.get('text')).toBe(message);
   });
   it('rejects empty orders and limits notes', () => { expect(() => checkoutMessage('shop', [])).toThrow(); expect(checkoutMessage('shop', [item()], 'x'.repeat(900))).not.toContain('x'.repeat(501)); });

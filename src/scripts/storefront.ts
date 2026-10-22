@@ -11,12 +11,13 @@ let selection: CartItem | null = null;
 let storageAvailable = true;
 try { cart = restoreCart(localStorage.getItem(CART_KEY)); } catch { storageAvailable = false; }
 let toastTimer: ReturnType<typeof setTimeout>;
+const storageUnavailableNotice = 'Penyimpanan browser tidak tersedia. Keranjang hanya berlaku di halaman ini dan akan hilang saat Anda berpindah halaman.';
 function announce(message: string) { const el = $('#announcement'); el.textContent = message; el.classList.add('visible'); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('visible'), 3200); }
 function make<K extends keyof HTMLElementTagNameMap>(tag: K, text = '', className = '') { const el = document.createElement(tag); el.textContent = text; el.className = className; return el; }
 function save() {
   try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch { storageAvailable = false; }
   renderCart();
-  if (!storageAvailable) announce('Keranjang Anda is available for this page session. Browser storage is unavailable.');
+  if (!storageAvailable) announce(storageUnavailableNotice);
 }
 function renderCart() {
   document.querySelectorAll('.cart-count').forEach(el => { el.textContent = String(cart.reduce((sum, i) => sum + i.quantity, 0)); });
@@ -74,7 +75,7 @@ $('#product-form').addEventListener('change', updateSelection);
 document.querySelectorAll<HTMLButtonElement>('[data-quantity]').forEach(button => button.addEventListener('click', () => { if (selection) { selection.quantity = Math.max(1, Math.min(99, selection.quantity + Number(button.dataset.quantity))); updateSelection(); } }));
 $('#product-form').addEventListener('submit', event => {
   event.preventDefault(); if (!selection) return;
-  try { updateSelection(); cart = addItem(cart, selection); save(); productDialog.close(); announce(`${productFor(selection).name} ditambahkan ke keranjang.`); } catch (error) { $('#product-error').textContent = error instanceof Error ? error.message : 'Produk belum dapat ditambahkan.'; }
+  try { updateSelection(); cart = addItem(cart, selection); save(); productDialog.close(); const addedMessage = `${productFor(selection).name} ditambahkan ke keranjang.`; announce(storageAvailable ? addedMessage : `${addedMessage} ${storageUnavailableNotice}`); } catch (error) { $('#product-error').textContent = error instanceof Error ? error.message : 'Produk belum dapat ditambahkan.'; }
 });
 $('#clear-cart').addEventListener('click', () => { cart = []; save(); cartDialog.querySelector<HTMLButtonElement>('[data-close]')?.focus(); });
 $('#checkout').addEventListener('click', () => {
@@ -82,7 +83,7 @@ $('#checkout').addEventListener('click', () => {
   try {
     const url = launchCheckout(business, cart, $<HTMLTextAreaElement>('#customer-notes').value, window);
     const fallback = $<HTMLAnchorElement>('#checkout-fallback'); fallback.href = url; fallback.hidden = false;
-    $('#checkout-status').textContent = 'Send the message in WhatsApp and wait for shop confirmation. Keranjang Anda has been kept. If the tab did not open, use the link below.';
+    $('#checkout-status').textContent = 'Kirim pesan di WhatsApp dan tunggu konfirmasi kedai. Isi keranjang tetap tersimpan. Jika tab tidak terbuka, gunakan tautan di bawah.';
   } catch (error) { $('#checkout-status').textContent = error instanceof Error ? error.message : 'Pesan pemesanan belum dapat disiapkan.'; }
 });
 window.addEventListener('storage', event => { if (event.key === CART_KEY || event.key === null) { cart = restoreCart(event.newValue); renderCart(); } });

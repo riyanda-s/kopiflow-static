@@ -7,10 +7,11 @@ import { existsSync, readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import productImages from '../../assets/evidence/product-images.json';
 import generatedImages from '../../assets/evidence/generated-products.json';
-it('keeps the local demo origin explicit until an actual public origin is supplied', () => {
+it('keeps demo ordering and indexing disabled when a public origin is configured', () => {
   expect(publicSiteUrl(undefined)).toBeUndefined(); expect(publicSiteUrl(' ')).toBeUndefined();
   expect(publicSiteUrl(' https://demo.shop.co.id/ ')).toBe('https://demo.shop.co.id');
   expect(business.isDemo).toBe(true); expect(business.whatsappVerified).toBe(false); expect(business.allowIndexing).toBe(false);
+  expect(business.whatsapp).toBe('');
 });
 it.each(['http://demo.shop.co.id', 'https://localhost', 'https://127.0.0.1', 'https://coffee.test', 'https://kopisenja.example', 'https://example.com', 'https://demo.shop.co.id/menu/', 'https://demo.shop.co.id?token=secret', 'https://user:pass@demo.shop.co.id', 'https://demo.shop.co.id/#menu'])('rejects unsafe or placeholder public origin %s', value => expect(() => publicSiteUrl(value)).toThrow());
 it('publishes only registered assets and truthful product imagery', () => {
