@@ -1,27 +1,28 @@
 /* Content is visible without initialization. No pending/hidden reveal state. */
 :root { --motion-ease: cubic-bezier(.22, 1, .36, 1); }
 html { scroll-padding-top: 120px; }
-.site-header { position: sticky; top: 0; transition: box-shadow 240ms ease, background-color 240ms ease; }
+.site-header { position: sticky; top: 0; transition: box-shadow 350ms var(--motion-ease), background-color 350ms var(--motion-ease); }
 .site-header.is-scrolled { background-color: var(--cream); box-shadow: 0 4px 18px #3b241c12; }
 .motion-nav-sentinel { position: absolute; top: 0; left: 0; width: 1px; height: 1px; pointer-events: none; }
 .site-header nav a { position: relative; border-bottom-color: transparent; }
-.site-header nav a::after { content: ''; position: absolute; inset: auto 0 -1px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 240ms var(--motion-ease); }
+.site-header nav a::after { content: ''; position: absolute; inset: auto 0 -1px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 350ms var(--motion-ease); }
 .site-header nav a[aria-current]::after,.site-header nav a:focus-visible::after { transform: scaleX(1); }
 .hero-photo { overflow: hidden; }
-.hero h1 > span { animation: kf-headline 800ms var(--motion-ease) both; }
-.hero h1 > span:nth-child(2) { animation-delay: 110ms; }
-.hero-photo img { animation: kf-image 1100ms var(--motion-ease) both; }
-.hero-buttons { animation: kf-cta 700ms 220ms var(--motion-ease) both; }
+.hero h1 > span { animation: kf-headline 1200ms var(--motion-ease) both; }
+.hero h1 > span:nth-child(2) { animation-delay: 120ms; }
+.hero-photo img { animation: kf-image 1800ms var(--motion-ease) both; }
+.hero-buttons { animation: kf-cta 1100ms 240ms var(--motion-ease) both; }
 .hero-caption .sun-mark { animation: kf-accent 1400ms var(--motion-ease) both; }
-.motion-enter { animation: kf-reveal 650ms var(--motion-ease) var(--motion-delay, 0ms) backwards; }
-.motion-enter img { animation: kf-photo-fade 650ms var(--motion-ease) var(--motion-delay, 0ms) backwards; }
-.product-image img,.gallery img { transition: transform 650ms var(--motion-ease); }
-.add-button,.button,.category-filter button { transition: transform 180ms var(--motion-ease), background-color 180ms ease, color 180ms ease, border-color 180ms ease; }
-.button:active:not(:disabled),.add-button:active:not(:disabled) { transform: scale(.97); }
+.motion-enter { animation: kf-reveal 1100ms var(--motion-ease) var(--motion-delay, 0ms) backwards; }
+.motion-enter img { animation: kf-photo-fade 1100ms var(--motion-ease) var(--motion-delay, 0ms) backwards; }
+.product-image img { transition: transform 450ms var(--motion-ease); }
+.gallery img { transition: transform 650ms var(--motion-ease); }
+.add-button,.button,.category-filter button { transition: transform 450ms var(--motion-ease), background-color 180ms ease, color 180ms ease, border-color 180ms ease; }
+.button:active:not(:disabled),.add-button:active:not(:disabled) { box-shadow: inset 0 0 0 1px currentColor; }
 .category-filter button { position: relative; }
 .category-filter button::after { content: ''; position: absolute; inset: auto 8px 4px; height: 1px; background: currentColor; transform: scaleX(0); transition: transform 220ms var(--motion-ease); }
 .category-filter button[aria-pressed=true]::after { transform: scaleX(1); }
-dialog[open] .modal-shell { animation: kf-dialog 260ms var(--motion-ease); }
+dialog[open] .modal-shell { animation: kf-dialog 400ms var(--motion-ease); }
 dialog[open] .cart-shell { animation: kf-cart 300ms var(--motion-ease); }
 dialog[open]::backdrop { animation: kf-backdrop 220ms ease; }
 .cart-updated .cart-count { animation: kf-count 480ms var(--motion-ease); }
@@ -53,7 +54,7 @@ dialog[open]::backdrop { animation: kf-backdrop 220ms ease; }
   .product-image:hover img,.button:hover { transform: none; }
 }
 @media (max-width: 760px) {
-  .site-header nav.open { animation: kf-navigation 240ms var(--motion-ease); }
+  .site-header nav.open { animation: kf-navigation 350ms var(--motion-ease); }
   .no-script-nav { display: flex; flex-wrap: wrap; gap: 8px 20px; padding-block: 16px; }
   .no-script-nav a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; text-underline-offset: 4px; }
 }

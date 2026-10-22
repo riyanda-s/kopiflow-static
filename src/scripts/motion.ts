@@ -3,22 +3,57 @@ const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
 const targets = Array.from(document.querySelectorAll<HTMLElement>(
   '.story-image, .story-copy, #favorites .product-card, .bestsellers .heading-row, .bestsellers .product-card, .values-grid article, .gallery figure, .visit-section > *, .menu-section .product-card',
 ));
-const seen = new WeakSet<Element>();
+type Phase = 'armed' | 'running' | 'settled';
+const phases = new Map<Element, Phase>(targets.map(target => [target, 'armed']));
+const hidden = (target: Element) => !!target.closest('[hidden]') || target.getClientRects().length === 0;
+const outside = (target: Element) => {
+  const rect = target.getBoundingClientRect();
+  return rect.bottom < -64 || rect.top > innerHeight + 64;
+};
+const settleTarget = (target: Element, phase: Phase = 'settled') => {
+  phases.set(target, phase);
+  target.classList.remove('motion-enter');
+};
 targets.forEach(target => {
   const siblings = Array.from(target.parentElement?.children ?? []);
-  target.style.setProperty('--motion-delay', `${Math.min(siblings.indexOf(target) % 4, 3) * 70}ms`);
+  target.style.setProperty('--motion-delay', `${Math.min(siblings.indexOf(target) % 4, 3) * 120}ms`);
 });
 let reveals: IntersectionObserver | undefined;
+let exits: IntersectionObserver | undefined;
+function observe() {
+  if (preference.matches) return;
+  targets.forEach(target => { exits?.observe(target); reveals?.observe(target); });
+}
 if ('IntersectionObserver' in window) {
+  // A generous outer boundary provides hysteresis. Threshold crossings inside
+  // the viewport never re-arm a settled element; transforms are only 12px.
+  exits = new IntersectionObserver(entries => {
+    for (const { target, isIntersecting } of entries) {
+      if (!isIntersecting && !hidden(target) && outside(target)) settleTarget(target, 'armed');
+    }
+  }, { rootMargin: '64px 0px', threshold: 0 });
   reveals = new IntersectionObserver(entries => {
     for (const entry of entries) {
-      if (!entry.isIntersecting || preference.matches || seen.has(entry.target)) continue;
-      seen.add(entry.target);
-      entry.target.classList.add('motion-enter');
-      reveals?.unobserve(entry.target);
+      const target = entry.target;
+      if (preference.matches || hidden(target) || !entry.isIntersecting || entry.intersectionRatio < .08 || phases.get(target) !== 'armed') continue;
+      // Never move a control already being used by keyboard or pointer.
+      if (target.contains(document.activeElement) || (matchMedia('(hover: hover)').matches && target.matches(':hover'))) {
+        settleTarget(target); continue;
+      }
+      phases.set(target, 'running');
+      target.classList.add('motion-enter');
     }
   }, { threshold: .08, rootMargin: '0px 0px -24px 0px' });
-  if (!preference.matches) targets.forEach(target => reveals?.observe(target));
+  observe();
+
+  // Filtering is not a scroll exit. Cancel hidden cards and suppress their
+  // return until they subsequently leave the viewport by a real scroll.
+  const catalogue = document.querySelector('.menu-section');
+  if (catalogue) new MutationObserver(records => {
+    for (const record of records) {
+      if (record.target instanceof Element && phases.has(record.target)) settleTarget(record.target);
+    }
+  }).observe(catalogue, { subtree: true, attributes: true, attributeFilter: ['hidden'] });
 
   const header = document.querySelector('.site-header');
   if (header) {
@@ -30,27 +65,40 @@ if ('IntersectionObserver' in window) {
   }
 }
 document.addEventListener('animationend', event => {
-  if (event.animationName === 'kf-reveal' && event.target instanceof Element) event.target.classList.remove('motion-enter');
+  if (event.animationName === 'kf-reveal' && event.target instanceof Element) settleTarget(event.target, phases.get(event.target) === 'armed' ? 'armed' : 'settled');
   if (event.animationName === 'kf-count') document.querySelectorAll('.cart-updated').forEach(target => target.classList.remove('cart-updated'));
 });
-// Filtering can cancel an entrance before animationend; never replay it on return.
+// Cancellation and completion settle the current entry without re-arming it.
 document.addEventListener('animationcancel', event => {
-  if (event.animationName === 'kf-reveal' && event.target instanceof Element) event.target.classList.remove('motion-enter');
+  if (event.animationName === 'kf-reveal' && event.target instanceof Element) settleTarget(event.target, phases.get(event.target) === 'armed' ? 'armed' : 'settled');
 });
 document.addEventListener('focusin', event => {
   // Do not move a pointer's target between pointerdown and pointerup.
   if (!(event.target instanceof Element) || !event.target.matches(':focus-visible')) return;
-  event.target.closest('.motion-enter')?.classList.remove('motion-enter');
+  const target = event.target.closest('.motion-enter');
+  if (target) settleTarget(target);
   event.target.closest('.hero-buttons')?.getAnimations().forEach(animation => animation.finish());
 });
 function settle() {
+  targets.forEach(target => settleTarget(target));
   document.querySelectorAll('.motion-enter,.cart-updated').forEach(target => target.classList.remove('motion-enter', 'cart-updated'));
   document.getAnimations?.().filter(animation => 'animationName' in animation && String(animation.animationName).startsWith('kf-')).forEach(animation => animation.finish());
 }
 preference.addEventListener('change', () => {
-  if (preference.matches) { reveals?.disconnect(); targets.forEach(target => seen.add(target)); settle(); }
+  reveals?.disconnect(); exits?.disconnect(); settle();
+  if (!preference.matches) {
+    targets.forEach(target => { if (!hidden(target) && outside(target)) phases.set(target, 'armed'); });
+    observe();
+  }
 });
-window.addEventListener('pageshow', event => { if (event.persisted) settle(); });
+window.addEventListener('pageshow', event => {
+  if (!event.persisted) return;
+  settle();
+  // Restored visible content stays still; offscreen content can enter normally.
+  if (!preference.matches) targets.forEach(target => {
+    if (!hidden(target) && outside(target)) phases.set(target, 'armed');
+  });
+});
 const count = document.querySelector('.cart-count');
 if (count && 'MutationObserver' in window) {
   let previous = Number(count.textContent);
