@@ -2,12 +2,20 @@ import { test, expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { mkdir, writeFile } from 'node:fs/promises';
 
+async function settleMotion(page: Page) {
+  await page.evaluate(async () => {
+    await new Promise(requestAnimationFrame); await new Promise(requestAnimationFrame);
+    await Promise.all(document.getAnimations().filter(animation => animation.playState === 'running').map(animation => animation.finished.catch(() => undefined)));
+  });
+}
+
 async function readyImages(page: Page) {
   await page.evaluate(async () => {
     const images = Array.from(document.images);
     images.forEach(image => { image.loading = 'eager'; });
     await Promise.all(images.map(image => image.decode()));
   });
+  await settleMotion(page);
 }
 
 async function alignedProducts(page: Page, selector: string) {
@@ -83,6 +91,7 @@ test(`homepage and menu align at ${width}px including long copy`, async ({ page 
         cards[0]!.querySelector('h3')!.textContent = 'Kopi Susu Pilihan Nusantara untuk Menemani Cerita Sore yang Panjang';
         cards[1]!.querySelector('p')!.textContent = 'Seduhan lembut dengan cita rasa yang akrab, dinikmati perlahan bersama teman cerita. '.repeat(5);
       });
+      await settleMotion(page);
       await alignedProducts(page, '.product-grid .product-card');
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
       await page.locator('.product-grid').first().screenshot({ path: `${directory}/${width}-${route === '/' ? 'home' : 'menu'}-long-copy.png`, style: '.mobile-cart,.skip-link:not(:focus){visibility:hidden!important}' });

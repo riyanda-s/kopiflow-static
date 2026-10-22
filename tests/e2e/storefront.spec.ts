@@ -127,12 +127,14 @@ test('demo ordering stays disabled and mobile ordering controls are comfortable 
   await page.goto('/menu/');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   if (page.viewportSize()!.width < 760) expect(await page.locator('.product-card > p').first().evaluate(el => parseFloat(getComputedStyle(el).fontSize))).toBeGreaterThanOrEqual(14);
-  const addTarget = await page.locator('.add-button').first().boundingBox(); expect(addTarget!.width).toBeGreaterThanOrEqual(44); expect(addTarget!.height).toBeGreaterThanOrEqual(44);
+  // DOMRect translation arithmetic can report 43.999969px for a 44px target.
+  // Normalize to 1/1000 CSS px; the 44px requirement and scale checks remain.
+  const addTarget = await page.locator('.add-button').first().boundingBox(); expect(Number(addTarget!.width.toFixed(3))).toBeGreaterThanOrEqual(44); expect(Number(addTarget!.height.toFixed(3))).toBeGreaterThanOrEqual(44);
   await expect(page.locator('html')).toHaveAttribute('lang', 'id');
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex, follow');
   await page.getByRole('button', { name: 'Atur Butter Croissant', exact: true }).click();
   for (const button of [page.locator('#add-to-cart'), page.locator('[data-quantity="1"]'), page.locator('[data-quantity="-1"]')]) {
-    const box = await button.boundingBox(); expect(box!.width).toBeGreaterThanOrEqual(44); expect(box!.height).toBeGreaterThanOrEqual(44);
+    const box = await button.boundingBox(); expect(Number(box!.width.toFixed(3))).toBeGreaterThanOrEqual(44); expect(Number(box!.height.toFixed(3))).toBeGreaterThanOrEqual(44);
   }
   await page.getByRole('button', { name: 'Tambah ke keranjang' }).click();
   await page.getByRole('button', { name: 'Buka keranjang' }).click();

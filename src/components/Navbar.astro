@@ -8,3 +8,4 @@ const links = [{ href: '/', label: 'Beranda' }, { href: '/menu/', label: 'Menu' 
   <nav lang="id" aria-label="Navigasi utama" id="main-nav">{links.map(link => <a href={link.href} aria-current={Astro.url.pathname === link.href ? 'page' : undefined}>{link.label}</a>)}</nav>
   <div class="nav-actions"><a href="/visit/" class="nav-visit">{business.navigation.visitCta} <ArrowUpRight size={16}/></a><button class="icon-button cart-trigger"><span class="sr-only">Buka keranjang </span><ShoppingBag size={21}/><span class="cart-count">0</span></button><button id="nav-toggle" class="icon-button nav-toggle" aria-label="Buka navigasi" aria-controls="main-nav" aria-expanded="false"><Menu size={23}/></button></div>
 </div></header>
+<noscript><nav class="no-script-nav shell" aria-label="Navigasi tanpa JavaScript">{links.map(link => <a href={link.href} aria-current={Astro.url.pathname === link.href ? 'page' : undefined}>{link.label}</a>)}</nav></noscript>
