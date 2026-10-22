@@ -42,13 +42,13 @@ async function alignedProducts(page: Page, selector: string) {
 }
 
 for (const width of [1920, 1440, 1024, 768, 390, 320]) {
-test(`homepage and menu align at ${width}px including long copy`, async ({ page }, testInfo) => {
+for (const route of ['/', '/menu/']) {
+test(`${route === '/' ? 'homepage' : 'menu'} aligns at ${width}px including long copy`, async ({ page }, testInfo) => {
   test.setTimeout(150_000);
   const directory = `qa-artifacts/ui-polish/${testInfo.project.name}`;
   await mkdir(directory, { recursive: true });
   const report: object[] = [];
     await page.setViewportSize({ width, height: 900 });
-    for (const route of ['/', '/menu/']) {
       await page.goto(route); await page.addStyleTag({ content: 'html{scroll-behavior:auto!important}' });
       await readyImages(page);
       await page.evaluate(() => { if (document.activeElement instanceof HTMLElement) document.activeElement.blur(); });
@@ -58,9 +58,18 @@ test(`homepage and menu align at ${width}px including long copy`, async ({ page 
       await expect(page.getByText('Ilustrasi AI · bukan foto produk asli', { exact: true })).toHaveCount(0);
       const products = await alignedProducts(page, '.product-grid .product-card');
       const ratio = await page.locator('.product-image').first().evaluate(node => node.clientWidth / node.clientHeight);
-      expect(Math.abs(ratio - (width > 760 ? 1.25 : 1))).toBeLessThan(.02);
+      expect(Math.abs(ratio - 1)).toBeLessThan(.02);
       if (route === '/') {
         await expect(page.locator('html')).toHaveAttribute('lang', 'id');
+        await expect(page.locator('.hero-photo img')).toHaveAttribute('src', '/images/product-kopi-aren-ai.webp');
+        await expect(page.locator('.hero-product-note')).toContainText('Es Kopi Susu Gula Aren');
+        await expect(page.locator('.hero-product-note')).toContainText('24.000');
+        const heroImage = await page.locator('.hero-photo img').evaluate(node => ({ intrinsic: (node as HTMLImageElement).naturalWidth, rendered: node.getBoundingClientRect().width }));
+        expect(heroImage.intrinsic).toBe(700);
+        expect(heroImage.rendered).toBeLessThanOrEqual(heroImage.intrinsic);
+        await expect(page.locator('.hero-demo-note')).toContainText('kedai fiktif');
+        await expect(page.locator('.signature-campaign img')).toHaveAttribute('src', '/images/product-kopi-aren-ai.webp');
+        await expect(page.locator('.campaign-ingredients li')).toHaveCount(3);
         await expect(page.locator('.bestsellers .eyebrow')).toHaveText('PILIHAN KEDAI');
         await expect(page.locator('.gallery img')).toHaveCount(3);
         const gallery = await page.locator('.gallery figure').evaluateAll(figures => figures.map(figure => {
@@ -96,7 +105,7 @@ test(`homepage and menu align at ${width}px including long copy`, async ({ page 
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
       await page.locator('.product-grid').first().screenshot({ path: `${directory}/${width}-${route === '/' ? 'home' : 'menu'}-long-copy.png`, style: '.mobile-cart,.skip-link:not(:focus){visibility:hidden!important}' });
       report.push({ width, route, products, imagesDecoded: true, equalTracks: true, galleryAligned: route === '/' ? true : null, longCopyNoClipping: true, horizontalOverflow: false, axeViolations: 0 });
-    }
+    if (route === '/menu/') {
     if (width < 760) { await page.locator('#nav-toggle').click(); await expect(page.locator('#main-nav')).toBeVisible(); await page.keyboard.press('Escape'); }
     await page.getByRole('button', { name: 'Atur Butter Croissant', exact: true }).first().focus(); await page.keyboard.press('Enter');
     await expect(page.locator('#product-modal')).toBeVisible();
@@ -108,6 +117,8 @@ test(`homepage and menu align at ${width}px including long copy`, async ({ page 
     expect((await new AxeBuilder({ page }).include('#cart-drawer').withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).violations).toEqual([]);
     await page.keyboard.press('Escape');
     await page.evaluate(() => localStorage.clear());
-  await writeFile(`${directory}/measurements-${width}.json`, JSON.stringify(report, null, 2));
+    }
+  await writeFile(`${directory}/measurements-${width}-${route === '/' ? 'home' : 'menu'}.json`, JSON.stringify(report, null, 2));
 });
+}
 }

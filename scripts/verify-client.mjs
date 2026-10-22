@@ -14,6 +14,7 @@ for (const name of ['src', 'public', 'astro.config.mjs', 'tsconfig.json']) await
 const configPath = resolve(root, 'src/config/business.ts');
 let config = await readFile(configPath, 'utf8');
 config = config.replaceAll('Kopi Senja', 'Kopi Uji').replaceAll('https://kopisenja.example', 'https://coffee.test').replace('isDemo: true', 'isDemo: false').replace('whatsappVerified: false', 'whatsappVerified: true').replace("whatsapp: '', instagram: '', mapsUrl: ''", "whatsapp: '447700900123', instagram: '', mapsUrl: 'https://www.google.com/maps'");
+config = config.replace("word: 'AREN'", "word: 'UJI'");
 await writeFile(configPath, config);
 const menuPath = resolve(root, 'src/data/menu.ts');
 const catalog = await readFile(menuPath, 'utf8');
@@ -55,7 +56,9 @@ try {
     const svg = decodeURIComponent(href.slice(href.indexOf(',') + 1));
     const raster = await sharp(Buffer.from(svg)).resize(600, 600).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
     assert.equal(jsQR(new Uint8ClampedArray(raster.data), raster.info.width, raster.info.height)?.data, 'https://coffee.test/menu/');
-    const report = { customerConfigOnly: true, productDataChanged: 'Roti Uji, Rp25.000', uiComponentsModified: false, productionModeCheckout: 'passed with blocked popup stub', recipientAndMessage: 'passed without external requests or sending', cartRetained: true, qrDecoded: 'https://coffee.test/menu/', timestamp: new Date().toISOString() };
+    await page.goto('http://127.0.0.1:4323/');
+    assert.equal(await page.locator('.campaign-word').textContent(), 'UJI');
+    const report = { campaignCopyConfigOnly: true, customerConfigOnly: true, productDataChanged: 'Roti Uji, Rp25.000', uiComponentsModified: false, productionModeCheckout: 'passed with blocked popup stub', recipientAndMessage: 'passed without external requests or sending', cartRetained: true, qrDecoded: 'https://coffee.test/menu/', timestamp: new Date().toISOString() };
     await mkdir('qa-artifacts', { recursive: true }); await writeFile('qa-artifacts/client-verification.json', JSON.stringify(report, null, 2)); console.log(JSON.stringify(report, null, 2));
   } finally { await browser.close(); }
 } finally { server.kill(); }

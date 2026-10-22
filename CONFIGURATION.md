@@ -12,7 +12,7 @@ Only assets registered in `src/config/assets.ts` may be referenced by the busine
 
 The final nine demo products use AI illustrations recorded in `assets/evidence/generated-products.json`; stock-product evidence is in `assets/evidence/product-images.json`. The `-ai` photo-stem suffix in `src/data/menu.ts` sets `imageGenerated`; retain this metadata, recorded origin and AI-labelled alt text. The fictional demo now uses one general illustration note after the menu grid, configured as `business.menuIllustrationNote`, instead of repeated visible labels on cards/dialogs. When replacing an illustration with a verified actual photograph, use a new non-`-ai` stem, update `src/data/product-photo-alt.ts`, register the new asset/evidence and obtain owner approval; no shared component edit is needed. Retained source PNGs live in ignored `assets/photo-sources/` for local re-encoding; generated images are not claimed as the real customer's products.
 
-Homepage section headings, descriptions, CTA text and supporting copy are centralized in `business.home`, `business.hero`, `business.story`, `business.philosophy` and `business.promotion`. Gallery captions live alongside their approved image paths and alternatives in `business.gallery`. Changing gallery copy or selecting another approved asset does not require editing `Gallery.astro`.
+Homepage section headings, descriptions, CTA text and supporting copy are centralized in `business.home`, `business.hero`, `business.story`, `business.philosophy` and `business.campaign`. Menu introduction copy is in `business.menuIntro`. The previous `business.promotion` record is retained for compatibility but its generic banner is replaced by the signature campaign. Gallery captions live alongside their approved image paths and alternatives in `business.gallery`. Changing gallery copy or selecting another approved asset does not require editing `Gallery.astro`.
 
 ## Create a separate customer repository
 
@@ -44,9 +44,10 @@ Edit `src/config/business.ts`:
 | `instagram` | Full HTTPS Instagram profile URL, or blank to omit. |
 | `mapsUrl` | Real HTTPS Maps directions/listing link. No map embed or API key. |
 | `hero`, `story`, `philosophy`, `coffeeQuality` | Approved shop-specific introduction, story, values and coffee information. Remove fictional wording for a real customer. |
-| `images`, `gallery` | Local image paths and truthful descriptive alt text. Hero has 800px and 1600px variants. |
+| `images`, `gallery` | Local image paths and truthful descriptive alt text. The brewing/story assets retain their existing variants; the product-led hero now uses the catalogue asset selected by `campaign.productId`. |
 | `bestsellers` | Product IDs selected by the shop. Verify claims before publishing. |
-| `promotion` | Approved promotional banner text. Do not promise discounts without shop approval. |
+| `campaign` | Signature-product ID, decorative `word`, ingredient/story copy and demo disclosure. Both hero and campaign read image, alt, name and hero price from the selected catalogue product. The ID must exist; no shared component edit is needed. |
+| `menuIntro` | Menu-page eyebrow, heading and introductory copy. |
 
 Colors live in `src/config/theme.ts`. Use six-digit hex colors; primary theme values become CSS variables. Recheck contrast after changing colors. Typography uses local system fonts, so there are no external font requests. Generic layout copy may be translated as a separate design/localization task; shop identity and operational details require no reusable component edits.
 
@@ -96,3 +97,5 @@ Set the final `domain`, rebuild, deploy, and visit `/qr/`. Check the printed URL
 ## Before launch
 
 Run `npm run qa`, `npm audit`, and Lighthouse. Update tests that deliberately assert the demo brand/domain/catalog when preparing the client fork; keep functional behavior and arithmetic assertions. Confirm the real WhatsApp recipient by opening a prepared message, then verify the final quote with the owner. Never describe opening WhatsApp as order acceptance or payment.
+
+The hero uses a contained image frame (at most 520 CSS px before its subtle entrance scale), rather than a full-bleed photo. The supplied illustration is 700px square; do not claim it is high-resolution photography. Supply a separately approved higher-resolution asset for crisp high-density close-ups, preserving truthful alt text and asset evidence. Copper and paper accent colors are configurable in `src/config/theme.ts`; recheck text, control and focus contrast after changing them.

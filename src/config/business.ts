@@ -12,6 +12,11 @@ export const business = {
     hero: '/images/hero.webp', heroSmall: '/images/hero-800.webp', heroAlt: 'Ilustrasi barista menuangkan air ke penyaring kertas untuk menyeduh kopi',
     story: '/images/hero.webp', storyAlt: 'Ilustrasi seduh kopi manual oleh Karl Fredrickson; bukan foto kedai ini',
   },
+  campaign: {
+    productId: 'kopi-aren', word: 'AREN', eyebrow: 'RACIKAN SENJA', title: 'Manisnya aren.\nTenangnya senja.',
+    body: 'Espresso yang tegas, susu yang lembut, dan gula aren yang menyatukan keduanya. Tiga rasa sederhana, satu alasan untuk melambat.',
+    ingredients: ['Espresso', 'Susu', 'Gula aren'], cta: 'Jelajahi kopi susu', demoNote: 'Komposisi ilustratif untuk demo kedai fiktif.',
+  },
   bestsellers: ['americano', 'matcha', 'v60', 'pain'],
   home: {
     rituals: ['KOPI PILIHAN', 'JEDA SEJENAK', 'CERITA HANGAT', 'DISEDUH SEPENUH HATI'],
@@ -25,6 +30,7 @@ export const business = {
     gallery: { eyebrow: 'SEKILAS MOMEN HANGAT', title: 'Sudut kecil untuk melepas penat.', note: 'Kopi, teman cerita, dan jeda di antaranya.', demoNote: 'Foto ilustratif untuk konsep kedai fiktif, bukan foto lokasi kedai.' },
     opening: { eyebrow: 'SINGGAH DAN MERASA NYAMAN', title: 'Selalu ada waktu\nuntuk secangkir kopi.', demoNote: 'Contoh jam buka untuk demo kedai fiktif.', holidayNote: 'Hubungi kedai untuk memastikan jam buka saat hari libur.', cta: 'Hubungi lewat WhatsApp' },
   },
+  menuIntro: { eyebrow: 'DIRACIK UNTUK JEDA ANDA', title: 'Rasa untuk\nsetiap jeda.', body: 'Kopi, teh, dan teman kecilnya. Pilih sesuai suasana.' },
   menuIllustrationNote: 'Foto menu merupakan ilustrasi. Tampilan penyajian dapat berbeda.',
   navigation: { descriptor: 'KOPI & CERITA SEHARI-HARI', visitCta: 'Mari singgah' },
   footer: { moment: 'TEMUKAN JEDA ANDA', connect: 'TETAP TERHUBUNG', hours: 'WAKTU UNTUK SINGGAH', sentiment: 'Secangkir hangat. Waktu yang lebih tenang.', credit: 'Menemani momen sehari-hari.', demoNote: 'Merek fiktif · Demo templat KopiFlow', customerNote: 'Dibuat dengan sepenuh hati di Indonesia' },
@@ -35,7 +41,7 @@ export const business = {
   hours: [{ days: 'Senin – Jumat', time: '08.00 – 21.00' }, { days: 'Sabtu – Minggu', time: '09.00 – 22.00' }],
   promotion: { eyebrow: 'TEMAN JEDA SORE', title: 'Kopi hangat, cerita mengalir.', description: 'Luangkan sore untuk seduhan favorit dan sesuatu yang baru dari oven.', cta: 'Temukan paduan rasa' },
   story: { eyebrow: 'SELAMAT SINGGAH', title: 'Tempat untuk melambat.\nRasa untuk kembali.', body: 'Kopi Senja adalah konsep kedai fiktif yang terinspirasi kehangatan sore di Indonesia. Tempat untuk berbagi cerita, menemukan ide, atau menikmati waktu sendiri.', detail: 'Menu demo kami mempertemukan cita rasa Indonesia dengan sajian klasik. Bahan sederhana, rasa ingin tahu, dan perhatian pada setiap seduhan.' },
-  hero: { eyebrow: 'JEDA KECIL SETIAP HARI', title: 'Hari yang hangat\nbermula dari kopi.', body: 'Diseduh dengan perhatian. Dinikmati bersama.\nTemukan nyaman dalam setiap cangkir.', storyCta: 'Cerita di balik secangkir kopi', caption: ['JEDA SEJENAK.', 'SECANGKIR KEHANGATAN.'], scroll: 'NIKMATI LEBIH DEKAT' },
+  hero: { eyebrow: 'KOPI SENJA / JEDA YANG TERASA', title: 'Pelan sedikit.\nNikmati senjanya.', body: 'Ada espresso, susu, dan manisnya aren.\nAda waktu sebentar untuk diri sendiri.', storyCta: 'Kenali Kopi Senja', caption: ['RACIKAN SENJA', 'Every Sip Has a Story.'], scroll: 'TEMUKAN TEMAN JEDA', demoNote: 'Konsep kedai fiktif \u00b7 Penyajian ilustratif' },
   philosophy: [
     { title: 'Seduhan penuh perhatian', text: 'Dari seduhan manual yang ringan hingga kopi susu yang akrab, selalu ada rasa untuk menemani hari.' },
     { title: 'Ruang untuk melepas penat', text: 'Bayangan ruang untuk bertukar cerita, membuka buku, dan menikmati waktu tanpa terburu-buru.' },

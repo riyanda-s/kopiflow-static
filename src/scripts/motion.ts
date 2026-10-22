@@ -1,7 +1,7 @@
 /** Presentation only: never changes products, filters, focus, cart data or checkout. */
 const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
 const targets = Array.from(document.querySelectorAll<HTMLElement>(
-  '.story-image, .story-copy, #favorites .product-card, .bestsellers .heading-row, .bestsellers .product-card, .values-grid article, .gallery figure, .visit-section > *, .menu-section .product-card',
+  '.campaign-copy, .campaign-product, .campaign-ingredients, .story-image, .story-copy, #favorites .product-card, .bestsellers .heading-row, .bestsellers .product-card, .values-grid article, .gallery figure, .visit-section > *, .menu-section .product-card',
 ));
 type Phase = 'armed' | 'running' | 'settled';
 const phases = new Map<Element, Phase>(targets.map(target => [target, 'armed']));

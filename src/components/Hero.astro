@@ -1,5 +1,24 @@
 ---
 import { business } from '../config/business';
+import { menu } from '../data/menu';
+import { rupiah } from '../utils/cart';
 import CTAButton from './CTAButton.astro';
+const product = menu.find(p => p.id === business.campaign.productId);
+if (!product) throw new Error('Campaign product must exist in the catalogue.');
 ---
-<section class="hero"><div class="hero-photo"><img src={business.images.hero} srcset={`${business.images.heroSmall} 800w, ${business.images.hero} 1600w`} sizes="(max-width: 760px) calc(100vw - 40px), 46vw" width="1600" height="1067" alt={business.images.heroAlt} fetchpriority="high" /></div><div class="shell hero-inner"><p class="eyebrow"><span class="little-line"></span>{business.hero.eyebrow}</p><h1>{business.hero.title.split('\n').map(line => <span>{line}</span>)}</h1><p class="hero-copy">{business.hero.body.split('\n').map(line => <span>{line}</span>)}</p><div class="hero-buttons"><CTAButton href="/menu/">Lihat Menu</CTAButton><a href="/about/" class="text-link">{business.hero.storyCta} <span>→</span></a></div><div class="hero-caption"><span class="sun-mark" aria-hidden="true">☼</span><span>{business.hero.caption[0]}<br/>{business.hero.caption[1]}</span></div></div><a href="#favorites" class="hero-scroll">{business.hero.scroll} <span>↓</span></a></section>
+<section class="hero">
+  <div class="shell hero-inner">
+    <p class="eyebrow"><span class="little-line"></span>{business.hero.eyebrow}</p>
+    <h1>{business.hero.title.split('\n').map(line => <span>{line}</span>)}</h1>
+    <p class="hero-copy">{business.hero.body.split('\n').map(line => <span>{line}</span>)}</p>
+    <div class="hero-buttons"><CTAButton href="/menu/">Lihat Menu</CTAButton><a href="/about/" class="text-link">{business.hero.storyCta} <span aria-hidden="true">&#8599;</span></a></div>
+    {business.isDemo && <p class="hero-demo-note">{business.hero.demoNote}</p>}
+    <div class="hero-caption"><span class="sun-mark" aria-hidden="true">&#9788;</span><span>{business.hero.caption[0]}<br/>{business.hero.caption[1]}</span></div>
+  </div>
+  <div class="hero-stage">
+    <span class="sunset-orbit" aria-hidden="true"></span>
+    <div class="hero-photo"><img src={product.image} width="700" height="700" sizes="(max-width: 760px) calc(100vw - 64px), 520px" alt={product.imageAlt} fetchpriority="high" /></div>
+    <div class="hero-product-note"><div><span class="eyebrow">{product.category}</span><p>{product.name}</p></div><strong>{rupiah(product.price)}</strong></div>
+  </div>
+  <a href="#favorites" class="hero-scroll">{business.hero.scroll} <span aria-hidden="true">&#8595;</span></a>
+</section>

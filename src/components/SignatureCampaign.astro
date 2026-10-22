@@ -1,0 +1,12 @@
+---
+import { business } from '../config/business';
+import { menu } from '../data/menu';
+import CTAButton from './CTAButton.astro';
+const product = menu.find(p => p.id === business.campaign.productId);
+if (!product) throw new Error('Campaign product must exist in the catalogue.');
+---
+<section class="promo shell signature-campaign" aria-labelledby="campaign-title">
+  <div class="campaign-copy"><p class="eyebrow">{business.campaign.eyebrow}</p><h2 id="campaign-title">{business.campaign.title}</h2><p>{business.campaign.body}</p><CTAButton href="/menu/">{business.campaign.cta}</CTAButton>{business.isDemo && <p class="campaign-disclaimer">{business.campaign.demoNote}</p>}</div>
+  <div class="campaign-product"><span class="campaign-word" aria-hidden="true">{business.campaign.word}</span><img src={product.image} width="700" height="700" loading="lazy" alt={product.imageAlt}/><p>{product.name}</p></div>
+  <ol class="campaign-ingredients">{business.campaign.ingredients.map((ingredient,i) => <li><span aria-hidden="true">0{i+1}</span>{ingredient}</li>)}</ol>
+</section>

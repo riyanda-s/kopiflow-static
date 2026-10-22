@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SignatureCampaign from '../components/SignatureCampaign.astro';
 import Hero from '../components/Hero.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import ProductGrid from '../components/ProductGrid.astro';
@@ -16,6 +17,6 @@ import { menu } from '../data/menu';
 <section class="section shell bestsellers"><div class="heading-row"><SectionHeading eyebrow={business.home.selection.eyebrow} title={business.home.selection.title} text={business.home.selection.text}/><a class="text-link" href="/menu/">{business.home.selection.cta} <ArrowUpRight size={18}/></a></div><ProductGrid products={menu.filter(p => business.bestsellers.some(id => id === p.id))}/>{business.isDemo && <p class="menu-footnote">{business.home.selection.demoNote}</p>}</section>
 <section class="section shell why-section"><SectionHeading eyebrow={business.home.values.eyebrow} title={business.home.values.title}/><div class="values-grid">{business.philosophy.map((value, i) => <article><span class="value-number">0{i + 1}</span><h3>{value.title}</h3><p>{value.text}</p></article>)}</div></section>
 <section class="section shell gallery-section"><div class="heading-row"><SectionHeading eyebrow={business.home.gallery.eyebrow} title={business.home.gallery.title}/><span class="gallery-note">{business.home.gallery.note}</span></div><Gallery/>{business.isDemo && <p class="menu-footnote">{business.home.gallery.demoNote}</p>}</section>
-<section class="promo shell"><span class="promo-sun" aria-hidden="true">☼</span><div><p class="eyebrow">{business.promotion.eyebrow}</p><h2>{business.promotion.title}</h2><p>{business.promotion.description}</p></div><CTAButton href="/menu/">{business.promotion.cta}</CTAButton></section>
+<SignatureCampaign/>
 <section class="section shell visit-section"><div class="opening"><p class="eyebrow">{business.home.opening.eyebrow}</p><h2>{business.home.opening.title}</h2>{business.hours.map(h => <div class="hours-row"><span>{h.days}</span><strong>{h.time}</strong></div>)}<p class="fine-print">{business.isDemo ? business.home.opening.demoNote : business.home.opening.holidayNote}</p><a href="/visit/#contact" class="text-link">{business.home.opening.cta} <ArrowUpRight size={16}/></a></div><LocationCard/></section>
 </Layout>
