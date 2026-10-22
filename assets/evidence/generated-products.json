@@ -1,0 +1,335 @@
+[
+  {
+    "productId": "kopi-aren",
+    "kind": "ai-generated",
+    "status": "APPROVED_DEMO_ILLUSTRATION",
+    "provider": "OpenAI",
+    "tool": "image_gen.imagegen",
+    "model": "Not exposed by built-in tool; not asserted",
+    "generatedOn": "2026-10-22",
+    "generationArtifact": "exec-143931d0-db87-4f91-806d-30fc1371ff47.png",
+    "prompt": "Use case: product-mockup. Create one original photorealistic product illustration for a fictional Indonesian specialty coffee demo, not an actual shop photograph. Square composition, centered complete serving with ample margin for a 5:4 card crop, warm natural window lighting, cream wall and espresso-brown accents, minimal light wooden tabletop, subtle realistic textures and soft shadows, premium restrained editorial food photography, three-quarter view. Only the specified serving; no text, labels, logos, watermark, people, hands, extra food, decorative ingredients, flowers or invented branding. No cream topping or sauces unless explicitly specified. Subject: Es Kopi Susu Gula Aren: a plain clear tumbler of iced Indonesian espresso and fresh milk sweetened with dark palm sugar syrup; espresso brown and creamy milk gently marbling above a small dark caramel-brown palm sugar layer, visible ice cubes. Ingredients only coffee, milk, palm sugar syrup and ice. No whipped cream, caramel drizzle, pandan, cocoa or garnish. Glass fully visible and centered.",
+    "referenceImages": [],
+    "sourceFile": "assets/photo-sources/generated-kopi-aren-source.png",
+    "sourceSha256": "7f14529fb7aa4b20f2c07502e69c9b157455aa640ec37c0307e42920679ed762",
+    "sourceDimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "output": "/images/product-kopi-aren-ai.webp",
+    "outputSha256": "c694831f719d45c10cf69e224fb6919373b5b629529d8adb25e1b8ce515aaaf8",
+    "bytes": 34496,
+    "transform": {
+      "autoOrient": true,
+      "crop": null,
+      "width": 700,
+      "height": 700,
+      "fit": "cover",
+      "webpQuality": 80
+    },
+    "alt": "Ilustrasi AI: Es kopi susu dengan lapisan gula aren dan es batu dalam gelas bening; bukan foto produk asli",
+    "visualCheck": "Inspected returned image and optimized derivative: intended serving, centered square, warm natural lighting, no text/watermark/branding or extra food. Composition leaves margins for existing responsive crops.",
+    "usageBasis": "Generated at user request via authorized built-in image_gen; use subject to applicable provider/account terms. No stock-photo license, human photographer, exclusivity or copyright registration asserted.",
+    "termsUrls": [
+      "https://openai.com/policies/terms-of-use/",
+      "https://openai.com/policies/services-agreement/"
+    ],
+    "termsCheckedOn": "2026-10-22"
+  },
+  {
+    "productId": "espresso",
+    "kind": "ai-generated",
+    "status": "APPROVED_DEMO_ILLUSTRATION",
+    "provider": "OpenAI",
+    "tool": "image_gen.imagegen",
+    "model": "Not exposed by built-in tool; not asserted",
+    "generatedOn": "2026-10-22",
+    "generationArtifact": "exec-8a05a75a-22a2-4359-9bb0-229fbfa913c0.png",
+    "prompt": "Use case: product-mockup. Create one original photorealistic product illustration for a fictional Indonesian specialty coffee demo, not an actual shop photograph. Square composition, centered complete serving with ample margin for a 5:4 card crop, warm natural window lighting, cream wall and espresso-brown accents, minimal light wooden tabletop, subtle realistic textures and soft shadows, premium restrained editorial food photography, three-quarter view. Only the specified serving; no text, labels, logos, watermark, people, hands, extra food, decorative ingredients, flowers or invented branding. No cream topping or sauces unless explicitly specified. Subject: Double Espresso: one double espresso serving, approximately 50–60 ml, in a single small plain ivory ceramic demitasse on a matching saucer. Deep espresso-brown liquid topped with natural golden hazelnut crema. One cup only, not two separate shots, not an Americano, no milk, latte art, sugar, ice, biscuits or other ingredients. Show cup interior clearly from a slightly elevated three-quarter angle.",
+    "referenceImages": [],
+    "sourceFile": "assets/photo-sources/generated-espresso-source.png",
+    "sourceSha256": "132b942fa16a04c38cd60ac3b6343c66f475e916dc7a52338dc25fb053fbd692",
+    "sourceDimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "output": "/images/product-espresso-ai.webp",
+    "outputSha256": "0f630c5768c05a3feb8488aa0a020bef182b89cbf1b13c3bb20bfb0a0d383980",
+    "bytes": 28650,
+    "transform": {
+      "autoOrient": true,
+      "crop": null,
+      "width": 700,
+      "height": 700,
+      "fit": "cover",
+      "webpQuality": 80
+    },
+    "alt": "Ilustrasi AI: Satu cangkir kecil double espresso dengan crema keemasan di atas tatakan krem; bukan foto produk asli",
+    "visualCheck": "Inspected returned image and optimized derivative: intended serving, centered square, warm natural lighting, no text/watermark/branding or extra food. Composition leaves margins for existing responsive crops.",
+    "usageBasis": "Generated at user request via authorized built-in image_gen; use subject to applicable provider/account terms. No stock-photo license, human photographer, exclusivity or copyright registration asserted.",
+    "termsUrls": [
+      "https://openai.com/policies/terms-of-use/",
+      "https://openai.com/policies/services-agreement/"
+    ],
+    "termsCheckedOn": "2026-10-22"
+  },
+  {
+    "productId": "pandan",
+    "kind": "ai-generated",
+    "status": "APPROVED_DEMO_ILLUSTRATION",
+    "provider": "OpenAI",
+    "tool": "image_gen.imagegen",
+    "model": "Not exposed by built-in tool; not asserted",
+    "generatedOn": "2026-10-22",
+    "generationArtifact": "exec-34bf556e-0ce0-44e7-a6a1-d0c525d703a5.png",
+    "prompt": "Use case: product-mockup. Create one original photorealistic product illustration for a fictional Indonesian specialty coffee demo, not an actual shop photograph. Square composition, centered complete serving with ample margin for a 5:4 card crop, warm natural window lighting, cream wall and espresso-brown accents, minimal light wooden tabletop, subtle realistic textures and soft shadows, premium restrained editorial food photography, three-quarter view. Only the specified serving; no text, labels, logos, watermark, people, hands, extra food, decorative ingredients, flowers or invented branding. No cream topping or sauces unless explicitly specified. Subject: Pandan Kopi Susu: a plain clear tumbler of iced Indonesian espresso and fresh milk infused with pandan, light natural pale sage-green milk gently marbled with espresso brown at the top, visible ice cubes, realistic mostly creamy beige-green color rather than bright green. Ingredients only espresso, milk, pandan flavor and ice. No matcha powder, leaf garnish, whipped cream or syrup drizzle.",
+    "referenceImages": [],
+    "sourceFile": "assets/photo-sources/generated-pandan-source.png",
+    "sourceSha256": "a076ebf1f5cc2757a860068ceb4a4978e937e4702d77b191b9e522e72bb11610",
+    "sourceDimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "output": "/images/product-pandan-ai.webp",
+    "outputSha256": "500c417f9e8bb604f95b0fe322bb8197649b9f1dc06a0beb11bee35d48365ac4",
+    "bytes": 28112,
+    "transform": {
+      "autoOrient": true,
+      "crop": null,
+      "width": 700,
+      "height": 700,
+      "fit": "cover",
+      "webpQuality": 80
+    },
+    "alt": "Ilustrasi AI: Kopi susu pandan berwarna hijau pucat dengan espresso dan es batu dalam gelas; bukan foto produk asli",
+    "visualCheck": "Inspected returned image and optimized derivative: intended serving, centered square, warm natural lighting, no text/watermark/branding or extra food. Composition leaves margins for existing responsive crops.",
+    "usageBasis": "Generated at user request via authorized built-in image_gen; use subject to applicable provider/account terms. No stock-photo license, human photographer, exclusivity or copyright registration asserted.",
+    "termsUrls": [
+      "https://openai.com/policies/terms-of-use/",
+      "https://openai.com/policies/services-agreement/"
+    ],
+    "termsCheckedOn": "2026-10-22"
+  },
+  {
+    "productId": "tubruk",
+    "kind": "ai-generated",
+    "status": "APPROVED_DEMO_ILLUSTRATION",
+    "provider": "OpenAI",
+    "tool": "image_gen.imagegen",
+    "model": "Not exposed by built-in tool; not asserted",
+    "generatedOn": "2026-10-22",
+    "generationArtifact": "exec-829f4e50-10c8-49f5-89ef-19b42c319c16.png",
+    "prompt": "Use case: product-mockup. Create one original photorealistic product illustration for a fictional Indonesian specialty coffee demo, not an actual shop photograph. Square composition, centered complete serving with ample margin for a 5:4 card crop, warm natural window lighting, cream wall and espresso-brown accents, minimal light wooden tabletop, subtle realistic textures and soft shadows, premium restrained editorial food photography, three-quarter view. Only the specified serving; no text, labels, logos, watermark, people, hands, extra food, decorative ingredients, flowers or invented branding. No cream topping or sauces unless explicitly specified. Subject: Kopi Tubruk: traditional Indonesian unfiltered black ground coffee steeped directly in hot water, served in one plain clear handled glass cup on a small cream ceramic saucer. Deep dark brown coffee with a faint natural surface ring, settled fine coffee sediment visible at the bottom through the glass. No espresso crema, milk, ice, sugar bowl, snacks, strainer, machine or extra ingredients.",
+    "referenceImages": [],
+    "sourceFile": "assets/photo-sources/generated-tubruk-source.png",
+    "sourceSha256": "5368beaa41a98a508f81f718a5202461f8a443220a6c2864ad7be6cbd78ec406",
+    "sourceDimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "output": "/images/product-tubruk-ai.webp",
+    "outputSha256": "a82180a22abb56f0e337925e40e30042b19d9ed724721a3c8948c7ba4dbf7676",
+    "bytes": 34066,
+    "transform": {
+      "autoOrient": true,
+      "crop": null,
+      "width": 700,
+      "height": 700,
+      "fit": "cover",
+      "webpQuality": 80
+    },
+    "alt": "Ilustrasi AI: Kopi tubruk hitam dengan endapan bubuk di dasar cangkir kaca; bukan foto produk asli",
+    "visualCheck": "Inspected returned image and optimized derivative: intended serving, centered square, warm natural lighting, no text/watermark/branding or extra food. Composition leaves margins for existing responsive crops.",
+    "usageBasis": "Generated at user request via authorized built-in image_gen; use subject to applicable provider/account terms. No stock-photo license, human photographer, exclusivity or copyright registration asserted.",
+    "termsUrls": [
+      "https://openai.com/policies/terms-of-use/",
+      "https://openai.com/policies/services-agreement/"
+    ],
+    "termsCheckedOn": "2026-10-22"
+  },
+  {
+    "productId": "chocolate",
+    "kind": "ai-generated",
+    "status": "APPROVED_DEMO_ILLUSTRATION",
+    "provider": "OpenAI",
+    "tool": "image_gen.imagegen",
+    "model": "Not exposed by built-in tool; not asserted",
+    "generatedOn": "2026-10-22",
+    "generationArtifact": "exec-c5b59374-1ca2-41a9-beaf-181965c3f0cb.png",
+    "prompt": "Use case: product-mockup. Create one original photorealistic product illustration for a fictional Indonesian specialty coffee demo, not an actual shop photograph. Square composition, centered complete serving with ample margin for a 5:4 card crop, warm natural window lighting, cream wall and espresso-brown accents, minimal light wooden tabletop, subtle realistic textures and soft shadows, premium restrained editorial food photography, three-quarter view. Only the specified serving; no text, labels, logos, watermark, people, hands, extra food, decorative ingredients, flowers or invented branding. No cream topping or sauces unless explicitly specified. Subject: Chocolate Milk: one plain clear drinking glass filled with smooth chocolate-brown milk made only from cocoa/chocolate and fresh milk. Even liquid texture, a very thin natural milk bubble ring permitted, no whipped cream, marshmallows, chocolate shavings, syrup, toppings, coffee, garnish or extra ingredients. No ice. Complete glass visible.",
+    "referenceImages": [],
+    "sourceFile": "assets/photo-sources/generated-chocolate-source.png",
+    "sourceSha256": "0bad3a8c5c97d91a590441fefdd2ba2bb8ca182d7d0a8f9c91c0e2a4100daff8",
+    "sourceDimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "output": "/images/product-chocolate-ai.webp",
+    "outputSha256": "b10d5ea3216e2104935ae1b27338ee1f7add75fd9ff9230e83f3bb2d14bccaa0",
+    "bytes": 30612,
+    "transform": {
+      "autoOrient": true,
+      "crop": null,
+      "width": 700,
+      "height": 700,
+      "fit": "cover",
+      "webpQuality": 80
+    },
+    "alt": "Ilustrasi AI: Susu cokelat polos dalam gelas bening tanpa krim atau topping; bukan foto produk asli",
+    "visualCheck": "Inspected returned image and optimized derivative: intended serving, centered square, warm natural lighting, no text/watermark/branding or extra food. Composition leaves margins for existing responsive crops.",
+    "usageBasis": "Generated at user request via authorized built-in image_gen; use subject to applicable provider/account terms. No stock-photo license, human photographer, exclusivity or copyright registration asserted.",
+    "termsUrls": [
+      "https://openai.com/policies/terms-of-use/",
+      "https://openai.com/policies/services-agreement/"
+    ],
+    "termsCheckedOn": "2026-10-22"
+  },
+  {
+    "productId": "jasmine",
+    "kind": "ai-generated",
+    "status": "APPROVED_DEMO_ILLUSTRATION",
+    "provider": "OpenAI",
+    "tool": "image_gen.imagegen",
+    "model": "Not exposed by built-in tool; not asserted",
+    "generatedOn": "2026-10-22",
+    "generationArtifact": "exec-75285ecc-a05e-4230-acce-6aaafdadddcd.png",
+    "prompt": "Use case: product-mockup. Create one original photorealistic product illustration for a fictional Indonesian specialty coffee demo, not an actual shop photograph. Square composition, centered complete serving with ample margin for a 5:4 card crop, warm natural window lighting, cream wall and espresso-brown accents, minimal light wooden tabletop, subtle realistic textures and soft shadows, premium restrained editorial food photography, three-quarter view. Only the specified serving; no text, labels, logos, watermark, people, hands, extra food, decorative ingredients, flowers or invented branding. No cream topping or sauces unless explicitly specified. Subject: Jasmine Tea: one small plain ivory ceramic cup and matching saucer containing clear warm amber jasmine-scented tea. Gently steaming, restrained realistic tea color. Only brewed tea and water, no visible blossoms, leaves, flower garnish, milk, lemon, sugar, food, branded teapot or packaging. Tea surface visible from a slightly elevated three-quarter angle.",
+    "referenceImages": [],
+    "sourceFile": "assets/photo-sources/generated-jasmine-source.png",
+    "sourceSha256": "1e9a59109627bae00dbea34a6795a9b8610fc95bee283dd3d420ef1a5a53292b",
+    "sourceDimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "output": "/images/product-jasmine-ai.webp",
+    "outputSha256": "4a27d1eb39f446360658bd388d7d2be4fd4c78c6a5fcfdc542ae84baad57da2d",
+    "bytes": 29986,
+    "transform": {
+      "autoOrient": true,
+      "crop": null,
+      "width": 700,
+      "height": 700,
+      "fit": "cover",
+      "webpQuality": 80
+    },
+    "alt": "Ilustrasi AI: Teh melati berwarna keemasan dalam cangkir krem tanpa bunga atau garnish; bukan foto produk asli",
+    "visualCheck": "Inspected returned image and optimized derivative: intended serving, centered square, warm natural lighting, no text/watermark/branding or extra food. Composition leaves margins for existing responsive crops.",
+    "usageBasis": "Generated at user request via authorized built-in image_gen; use subject to applicable provider/account terms. No stock-photo license, human photographer, exclusivity or copyright registration asserted.",
+    "termsUrls": [
+      "https://openai.com/policies/terms-of-use/",
+      "https://openai.com/policies/services-agreement/"
+    ],
+    "termsCheckedOn": "2026-10-22"
+  },
+  {
+    "productId": "lemon-tea",
+    "kind": "ai-generated",
+    "status": "APPROVED_DEMO_ILLUSTRATION",
+    "provider": "OpenAI",
+    "tool": "image_gen.imagegen",
+    "model": "Not exposed by built-in tool; not asserted",
+    "generatedOn": "2026-10-22",
+    "generationArtifact": "exec-795dfdbf-1909-4c95-a2be-e74c2826b610.png",
+    "prompt": "Use case: product-mockup. Create one original photorealistic product illustration for a fictional Indonesian specialty coffee demo, not an actual shop photograph. Square composition, centered complete serving with ample margin for a 5:4 card crop, warm natural window lighting, cream wall and espresso-brown accents, minimal light wooden tabletop, subtle realistic textures and soft shadows, premium restrained editorial food photography, three-quarter view. Only the specified serving; no text, labels, logos, watermark, people, hands, extra food, decorative ingredients, flowers or invented branding. No cream topping or sauces unless explicitly specified. Subject: Lemon Tea: one plain clear glass of amber black tea with fresh lemon juice, exactly one thin yellow lemon slice resting at the rim. Only black tea, water and lemon; no mint, honey, cinnamon, flowers, berries, lime, alcohol, syrup, straw or garnish other than that lemon slice. No ice. Complete glass visible.",
+    "referenceImages": [],
+    "sourceFile": "assets/photo-sources/generated-lemon-tea-source.png",
+    "sourceSha256": "a9793bd86da2d60887569dfacfa6327a6e259b62889877a7baea7daa979a9175",
+    "sourceDimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "output": "/images/product-lemon-tea-ai.webp",
+    "outputSha256": "ba1fa8eb1996ca33be5abf9f0a084fc1f164b05a62550132638d5d0acc0695c2",
+    "bytes": 30436,
+    "transform": {
+      "autoOrient": true,
+      "crop": null,
+      "width": 700,
+      "height": 700,
+      "fit": "cover",
+      "webpQuality": 80
+    },
+    "alt": "Ilustrasi AI: Teh hitam dengan lemon dalam gelas bening dan seiris lemon kuning di tepi gelas; bukan foto produk asli",
+    "visualCheck": "Inspected returned image and optimized derivative: intended serving, centered square, warm natural lighting, no text/watermark/branding or extra food. Composition leaves margins for existing responsive crops.",
+    "usageBasis": "Generated at user request via authorized built-in image_gen; use subject to applicable provider/account terms. No stock-photo license, human photographer, exclusivity or copyright registration asserted.",
+    "termsUrls": [
+      "https://openai.com/policies/terms-of-use/",
+      "https://openai.com/policies/services-agreement/"
+    ],
+    "termsCheckedOn": "2026-10-22"
+  },
+  {
+    "productId": "toast",
+    "kind": "ai-generated",
+    "status": "APPROVED_DEMO_ILLUSTRATION",
+    "provider": "OpenAI",
+    "tool": "image_gen.imagegen",
+    "model": "Not exposed by built-in tool; not asserted",
+    "generatedOn": "2026-10-22",
+    "generationArtifact": "exec-28154aad-2d61-4c27-a09d-d56cec8f53e1.png",
+    "prompt": "Use case: product-mockup. Create one original photorealistic product illustration for a fictional Indonesian specialty coffee demo, not an actual shop photograph. Square composition, centered complete serving with ample margin for a 5:4 card crop, warm natural window lighting, cream wall and espresso-brown accents, minimal light wooden tabletop, subtle realistic textures and soft shadows, premium restrained editorial food photography, three-quarter view. Only the specified serving; no text, labels, logos, watermark, people, hands, extra food, decorative ingredients, flowers or invented branding. No cream topping or sauces unless explicitly specified. Subject: Kaya Butter Toast: one plain cream ceramic plate with two small rectangular toast sandwiches, sliced thin and toasted evenly to crisp golden brown. Cut sides clearly reveal a thin pale golden coconut-egg kaya jam layer and a modest thin slab of pale butter between toasted slices. Only bread, kaya jam and butter. No cheese, eggs on plate, condensed milk, pandan leaf garnish, fruit, dips, extra food or text. Center the complete plate with ample margins.",
+    "referenceImages": [],
+    "sourceFile": "assets/photo-sources/generated-toast-source.png",
+    "sourceSha256": "0f67e836a594b9048a41f8139dc80f6ee3a6a520ed2de3f1958b685b1dce1053",
+    "sourceDimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "output": "/images/product-toast-ai.webp",
+    "outputSha256": "91cb5ea3e45a1849b8935f6460916f961a3ae1ef7acdd2f1790b748a28e23336",
+    "bytes": 44188,
+    "transform": {
+      "autoOrient": true,
+      "crop": null,
+      "width": 700,
+      "height": 700,
+      "fit": "cover",
+      "webpQuality": 80
+    },
+    "alt": "Ilustrasi AI: Roti panggang keemasan berisi selai kaya dan lapisan mentega di atas piring krem; bukan foto produk asli",
+    "visualCheck": "Inspected returned image and optimized derivative: intended serving, centered square, warm natural lighting, no text/watermark/branding or extra food. Composition leaves margins for existing responsive crops.",
+    "usageBasis": "Generated at user request via authorized built-in image_gen; use subject to applicable provider/account terms. No stock-photo license, human photographer, exclusivity or copyright registration asserted.",
+    "termsUrls": [
+      "https://openai.com/policies/terms-of-use/",
+      "https://openai.com/policies/services-agreement/"
+    ],
+    "termsCheckedOn": "2026-10-22"
+  },
+  {
+    "productId": "fries",
+    "kind": "ai-generated",
+    "status": "APPROVED_DEMO_ILLUSTRATION",
+    "provider": "OpenAI",
+    "tool": "image_gen.imagegen",
+    "model": "Not exposed by built-in tool; not asserted",
+    "generatedOn": "2026-10-22",
+    "generationArtifact": "exec-82b0c9ae-dd96-4da3-834d-d7c349ec5b1b.png",
+    "prompt": "Use case: product-mockup. Create one original photorealistic product illustration for a fictional Indonesian specialty coffee demo, not an actual shop photograph. Square composition, centered complete serving with ample margin for a 5:4 card crop, warm natural window lighting, cream wall and espresso-brown accents, minimal light wooden tabletop, subtle realistic textures and soft shadows, premium restrained editorial food photography, three-quarter view. Only the specified serving; no text, labels, logos, watermark, people, hands, extra food, decorative ingredients, flowers or invented branding. No cream topping or sauces unless explicitly specified. Subject: Sea Salt Fries: one small plain cream ceramic shallow bowl holding a modest serving of golden straight-cut peeled potato fries with a few visible tiny sea-salt crystals. Potatoes and sea salt only. No skin-on fries, sweet potatoes, herbs, black pepper, paprika, cheese, mayonnaise, ketchup, sauce, garnish, burger, extra food or seasoning. Center the complete bowl with ample margins.",
+    "referenceImages": [],
+    "sourceFile": "assets/photo-sources/generated-fries-source.png",
+    "sourceSha256": "26bd082ac2274ed74dcfa2944b3c00926b2983ba9c38249b41c78478b6eba584",
+    "sourceDimensions": {
+      "width": 1254,
+      "height": 1254
+    },
+    "output": "/images/product-fries-ai.webp",
+    "outputSha256": "7ef1c971ae57c44d7b48baddad7c49e9d0a0d23a7c144cad23645264c38be407",
+    "bytes": 40162,
+    "transform": {
+      "autoOrient": true,
+      "crop": null,
+      "width": 700,
+      "height": 700,
+      "fit": "cover",
+      "webpQuality": 80
+    },
+    "alt": "Ilustrasi AI: Kentang goreng kupas berwarna keemasan dengan taburan garam tanpa saus atau bumbu lain; bukan foto produk asli",
+    "visualCheck": "Inspected returned image and optimized derivative: intended serving, centered square, warm natural lighting, no text/watermark/branding or extra food. Composition leaves margins for existing responsive crops.",
+    "usageBasis": "Generated at user request via authorized built-in image_gen; use subject to applicable provider/account terms. No stock-photo license, human photographer, exclusivity or copyright registration asserted.",
+    "termsUrls": [
+      "https://openai.com/policies/terms-of-use/",
+      "https://openai.com/policies/services-agreement/"
+    ],
+    "termsCheckedOn": "2026-10-22"
+  }
+]

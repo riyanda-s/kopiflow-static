@@ -1,0 +1,25 @@
+/** Descriptive Indonesian alternatives for individually approved stock photographs. */
+export const productPhotoAlt: Record<string, string> = {
+  "product-latte": "Ilustrasi: Latte dengan seni susu dalam gelas bening di atas meja kayu; penyajian dapat berbeda",
+  "product-americano": "Ilustrasi: Americano hitam dalam cangkir kaca di atas tatakan; penyajian dapat berbeda",
+  "product-cappuccino": "Ilustrasi: Cappuccino dengan seni susu di dekat mesin espresso; penyajian dapat berbeda",
+  "product-flat-white": "Ilustrasi: Susu bertekstur halus dituangkan ke flat white dalam cangkir putih; penyajian dapat berbeda",
+  "product-vanilla": "Ilustrasi: Vanilla latte berlapis susu dan kopi dalam stoples kaca; penyajian dapat berbeda",
+  "product-mocha": "Ilustrasi: Mocha cokelat dengan pusaran susu dalam cangkir kaca; penyajian dapat berbeda",
+  "product-v60": "Ilustrasi: Bubuk kopi sedang diseduh melalui kertas filter pada dripper V60; penyajian dapat berbeda",
+  "product-cold-brew": "Ilustrasi: Cold brew dituangkan ke gelas berisi es batu; penyajian dapat berbeda",
+  "product-matcha": "Ilustrasi: Matcha latte hijau dengan es batu dalam gelas bening; penyajian dapat berbeda",
+  "product-lychee": "Ilustrasi: Es teh leci dengan buah leci dan daun mint dalam gelas; penyajian dapat berbeda",
+  "product-pain": "Ilustrasi: Pain au chocolat berlapis dengan ujung isian cokelat terlihat di atas baki; penyajian dapat berbeda",
+  "product-banana": "Ilustrasi: Banana bread tanpa lapisan gula di atas alas kayu; penyajian dapat berbeda",
+  "product-singkong": "Ilustrasi: Potongan singkong goreng keemasan di atas piring kaca; penyajian dapat berbeda",
+  "product-kopi-aren-ai": "Ilustrasi AI: Es kopi susu dengan lapisan gula aren dan es batu dalam gelas bening; bukan foto produk asli",
+  "product-espresso-ai": "Ilustrasi AI: Satu cangkir kecil double espresso dengan crema keemasan di atas tatakan krem; bukan foto produk asli",
+  "product-pandan-ai": "Ilustrasi AI: Kopi susu pandan berwarna hijau pucat dengan espresso dan es batu dalam gelas; bukan foto produk asli",
+  "product-tubruk-ai": "Ilustrasi AI: Kopi tubruk hitam dengan endapan bubuk di dasar cangkir kaca; bukan foto produk asli",
+  "product-chocolate-ai": "Ilustrasi AI: Susu cokelat polos dalam gelas bening tanpa krim atau topping; bukan foto produk asli",
+  "product-jasmine-ai": "Ilustrasi AI: Teh melati berwarna keemasan dalam cangkir krem tanpa bunga atau garnish; bukan foto produk asli",
+  "product-lemon-tea-ai": "Ilustrasi AI: Teh hitam dengan lemon dalam gelas bening dan seiris lemon kuning di tepi gelas; bukan foto produk asli",
+  "product-toast-ai": "Ilustrasi AI: Roti panggang keemasan berisi selai kaya dan lapisan mentega di atas piring krem; bukan foto produk asli",
+  "product-fries-ai": "Ilustrasi AI: Kentang goreng kupas berwarna keemasan dengan taburan garam tanpa saus atau bumbu lain; bukan foto produk asli"
+};

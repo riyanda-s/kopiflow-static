@@ -1,6 +1,18 @@
 # QA and launch checklist
 
-## Latest local remediation
+## Latest UI polish — 2026-10-22
+
+Repeated visible AI captions are replaced by one general note near the menu footer; AI alt text/metadata and asset evidence remain intact. Product card tracks, prices/borders and the three approved gallery images align at 1440/768/390/320px, including long-copy stress tests. Requested homepage copy is Indonesian and centralized. Check/lint/build passed, 51 unit tests and all 26 E2E tests passed, and the customer configuration fixture passed. Accessibility checks were retained and expanded across the four-width matrix. Screenshots/measurements are ignored under `qa-artifacts/ui-polish/`; see [UI-POLISH-REPORT.md](UI-POLISH-REPORT.md) for precise results, file changes and testing limits. Earlier image-restoration entries below describe the previous UI presentation.
+
+## Latest: final nine product illustrations — 2026-10-22
+
+All nine remaining placeholders are resolved using actual generated, inspected AI illustrations. All 23 menu products now have images. Each affected card/dialog visibly identifies AI imagery; stock-photo evidence and generation records are kept separate. See [PRODUCT-IMAGE-RESTORATION.md](PRODUCT-IMAGE-RESTORATION.md) for the full report and [assets/evidence/generated-products.json](assets/evidence/generated-products.json) for exact briefs and hashes. Check/lint/build passed, all 51 unit tests and 24 desktop/mobile E2E tests (35.1s) passed, and customer-configuration verification passed. Non-image menu data and disabled demo checkout are unchanged. No blocked asset was restored; no deployment, commit or push occurred. Earlier entries below are historical.
+
+## Earlier stock-photo follow-up — 2026-10-22
+
+Image restoration added 13 individually verified product photographs; nine placeholders remain, and Butter Croissant is unchanged. See [PRODUCT-IMAGE-RESTORATION.md](PRODUCT-IMAGE-RESTORATION.md) for source evidence, remaining blockers and the latest results: check/lint/build passed, 50 unit tests, 22 desktop/mobile E2E tests including axe accessibility, and customer-configuration verification passed. Menu prices/names/order behavior and disabled demo checkout are unchanged. No blocked asset was restored and nothing was deployed or pushed. The earlier review/remediation entries below are historical; this image follow-up does not reassess release readiness or Git commit status.
+
+## Earlier local remediation
 
 The current application uses only registered approved asset paths: two verified stock-photo sources plus original SVG assets. Six unverified sources are blocked/quarantined and excluded from Git/dist. Twenty-two products truthfully show no-photo placeholders. Ordering controls/descriptions, privacy and QR guidance are Indonesian; mobile text/targets are enlarged. Demo checkout remains disabled; tests require no real recipient or message. Real customer checkout additionally requires explicit `whatsappVerified: true`, a valid number and non-demo mode.
 

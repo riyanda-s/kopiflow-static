@@ -1,0 +1,48 @@
+{
+  "checkedOn": "2026-10-22",
+  "strategy": "Search licensed photos first, reject uncertain recipes/extra ingredients/branding or unpurchased premium assets, then generate original product illustrations using the authorized built-in capability.",
+  "candidateDecisions": [
+    {
+      "products": "kopi-aren / pandan",
+      "source": "Targeted Unsplash/Pexels searches for gula aren, kopi susu and pandan coffee",
+      "decision": "No individually verifiable accurate recipe photograph established; generic iced latte is insufficient."
+    },
+    {
+      "products": "espresso",
+      "source": "https://unsplash.com/photos/two-glasses-of-espresso-with-a-green-pot-uOla1XHqmkg",
+      "decision": "Search result depicts two separate glasses; rejected for the single double-espresso serving. Me5Heu4wCgQ remains rejected."
+    },
+    {
+      "products": "tubruk",
+      "source": "https://unsplash.com/photos/a-plate-of-food-and-a-cup-of-coffee-on-a-table-7Hx5GnZJXCo",
+      "decision": "Previously inspected original: branded glass and unrelated food; not restored."
+    },
+    {
+      "products": "chocolate",
+      "source": "https://unsplash.com/photos/person-holding-a-cup-of-chocolate-milk-A-CyXmoTSL4",
+      "decision": "Primary page names Ingridi Alves Photograph and Unsplash License, and links photo-1504654243730-5ba5c6d694d9; caption/tags also describe coffee/latte/cappuccino, so coffee-free recipe not established. e0cEh3LURnI remains unsuitable due to cream."
+    },
+    {
+      "products": "jasmine",
+      "source": "https://unsplash.com/photos/a-white-coffee-cup-and-saucer-with-sunlight-fOMQh9XRSP0",
+      "decision": "Primary page names LL Barkat and Unsplash License; image link is photo-1755016123077-705d78a513e8. Caption identifies a Royal Doulton teacup, not the brewed tea recipe; jasmine is only a tag. Insufficient product evidence."
+    },
+    {
+      "products": "lemon-tea",
+      "source": "https://unsplash.com/photos/a-glass-of-tea-with-lemon-and-mint-nbEojRupukQ",
+      "decision": "Search description includes mint and honey. B15r_IfDqxM branded cup and jPZLRKHEpkE lime garnish remain unsuitable from prior inspection."
+    },
+    {
+      "products": "toast",
+      "source": "https://commons.wikimedia.org/wiki/File:Kaya_toast_1.jpg",
+      "decision": "Primary page: Sofi Solihah, own work, CC BY 4.0, exact original https://upload.wikimedia.org/wikipedia/commons/f/f3/Kaya_toast_1.jpg. Downloaded and inspected: extra unidentified dipping sauce; caption does not establish butter filling. Not used; no CC BY asset published."
+    },
+    {
+      "products": "fries",
+      "source": "https://unsplash.com/photos/person-sprinkling-salt-in-fries-LEjEst7lLfU",
+      "decision": "Search description includes milkshake/hand/carton; no isolated sea-salt-only serving verified. Plain salt result BkWowglS_Uk is paid Unsplash+; no purchase made. Previously inspected herb/skin-on/dip candidates remain rejected."
+    }
+  ],
+  "stockPhotosPublished": 0,
+  "generatedAssetsPublished": 9
+}

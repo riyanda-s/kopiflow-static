@@ -3,6 +3,29 @@ import AxeBuilder from '@axe-core/playwright';
 import sharp from 'sharp';
 import jsQR from 'jsqr';
 import { mkdir, readFile } from 'node:fs/promises';
+import generatedImages from '../../assets/evidence/generated-products.json' with { type: 'json' };
+
+test('one menu illustration note replaces repeated labels while AI alternatives and assets remain intact', async ({ page }) => {
+  await page.goto('/menu/');
+  await expect(page.locator('[data-menu-illustration-note]')).toHaveCount(1);
+  await expect(page.locator('[data-menu-illustration-note]')).toHaveText('Foto menu merupakan ilustrasi. Tampilan penyajian dapat berbeda.');
+  expect(await page.locator('[data-menu-illustration-note]').evaluate(note => !!(document.querySelector('.menu-section .product-grid')!.compareDocumentPosition(note) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
+  await expect(page.locator('[data-image-disclosure], #product-image-disclosure')).toHaveCount(0);
+  for (const asset of generatedImages) {
+    const card = page.locator('[data-product-card]').filter({ has: page.locator(`button[data-product="${asset.productId}"]`) });
+    const image = card.locator('img');
+    await image.scrollIntoViewIfNeeded();
+    await expect(image).toHaveAttribute('src', asset.output);
+    await expect(image).toHaveAttribute('alt', asset.alt);
+    await expect.poll(() => image.evaluate(node => node instanceof HTMLImageElement && node.complete && node.naturalWidth === 700 && node.naturalHeight === 700)).toBe(true);
+    await card.locator('button[data-product]').first().click();
+    await expect(page.getByText('Ilustrasi AI · bukan foto produk asli', { exact: true })).toHaveCount(0);
+    await expect(page.locator('#modal-photo')).toHaveAttribute('alt', asset.alt);
+    await page.keyboard.press('Escape');
+  }
+  await page.locator('button[data-product="latte"]').first().click();
+  await expect(page.locator('#product-image-disclosure')).toHaveCount(0);
+});
 test('all static pages, metadata, assets, mobile sizing and navigation work', async ({ page }) => {
   const errors: string[] = []; page.on('pageerror', e => errors.push(e.message));
   for (const route of ['/', '/menu/', '/about/', '/visit/', '/privacy/', '/qr/']) {

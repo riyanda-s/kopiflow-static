@@ -25,7 +25,7 @@ function renderCart() {
   if (!cart.length) { const empty = make('div', '', 'empty-state'); empty.append(make('h3', 'Keranjang masih kosong.'), make('p', 'Pilih minuman atau makanan favorit Anda dari menu.')); const link = make('a', 'Lihat menu →', 'text-link'); link.href = '/menu/'; empty.append(link); host.append(empty); }
   cart.forEach((item, index) => {
     const p = productFor(item); const row = make('article', '', 'cart-row');
-    const image = make('img'); image.src = p.image; image.alt = p.name; image.width = 80; image.height = 80;
+    const image = make('img'); image.src = p.image; image.alt = p.imageAlt; image.width = 80; image.height = 80;
     const info = make('div', '', 'cart-item-info'); info.append(make('h3', p.name), make('p', describeItem(item)), make('strong', rupiah(unitPrice(item) * item.quantity)));
     const controls = make('div', '', 'cart-row-controls');
     const stepper = make('div', '', 'quantity-control');
