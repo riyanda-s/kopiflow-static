@@ -33,12 +33,12 @@ async function alignedProducts(page: Page, selector: string) {
   return { count: cards.length, rows: rows.size };
 }
 
-test('homepage and menu align at 1440, 768, 390 and 320px including long copy', async ({ page }, testInfo) => {
+for (const width of [1920, 1440, 1024, 768, 390, 320]) {
+test(`homepage and menu align at ${width}px including long copy`, async ({ page }, testInfo) => {
   test.setTimeout(150_000);
   const directory = `qa-artifacts/ui-polish/${testInfo.project.name}`;
   await mkdir(directory, { recursive: true });
   const report: object[] = [];
-  for (const width of [1440, 768, 390, 320]) {
     await page.setViewportSize({ width, height: 900 });
     for (const route of ['/', '/menu/']) {
       await page.goto(route); await page.addStyleTag({ content: 'html{scroll-behavior:auto!important}' });
@@ -99,6 +99,6 @@ test('homepage and menu align at 1440, 768, 390 and 320px including long copy', 
     expect((await new AxeBuilder({ page }).include('#cart-drawer').withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).violations).toEqual([]);
     await page.keyboard.press('Escape');
     await page.evaluate(() => localStorage.clear());
-  }
-  await writeFile(`${directory}/measurements.json`, JSON.stringify(report, null, 2));
+  await writeFile(`${directory}/measurements-${width}.json`, JSON.stringify(report, null, 2));
 });
+}
